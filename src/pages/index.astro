@@ -1,78 +1,311 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
-import { getCollection } from "astro:content";
-import createSlug from "../lib/createSlug"
-
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const last_posts = posts.slice(0, 3);
+import TimeLineElement from "../components/cv/TimeLine.astro";
 ---
 
 <BaseLayout sideBarActiveItemID="home">
-  <div class="pb-12 mt-5">
-    <div class="text-xl py-1">Hey there 👋</div>
-    <div class="text-5xl font-bold">I'm Manuel Ernesto</div>
-    <div class="text-3xl py-3 font-bold">Software Engineer and Entrepreneur</div>
-    <div class="py-2">
-      <text class="text-lg">
-        This is <b>Astrofy</b> a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS.
-        Create in minutes a website with Blog, CV, Project Section, Store and RSS Feed. I hope you find
-        it useful!
-      </text>
+  <!-- HOME -->
+  <section id="home-section" class="pb-12 mt-5 scroll-mt-20">
+    <div class="avatar mb-6">
+      <div class="w-36 h-36 rounded-full">
+        <img src="/profile.webp" alt="Dika Muhammad Azis" class="object-cover w-full h-full" />
+      </div>
     </div>
+    <div class="text-xl py-1">Hey there 👋</div>
+    <div class="text-5xl font-bold">I'm Dika Muhammad Azis</div>
+    <div class="text-3xl py-3 font-bold">Control Systems &amp; Electronics Engineer</div>
     <div class="mt-8">
-      <a class="btn" href="https://twitter.com/manuelernestog" target="_blank"> Let's connect!</a>
-      <a href="https://github.com/manuelernestog/astrofy" target="_blank" class="btn btn-outline ml-5">
-        Get This template
+      <a class="btn" href="https://www.linkedin.com/in/dikama" target="_blank"> Let's connect!</a>
+      <a href="/Dika_Muhammad_Azis_CV.pdf" target="_blank" class="btn btn-outline ml-5"> Download CV </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="mb-12 scroll-mt-20">
+    <div class="text-3xl w-full font-bold mb-5">About</div>
+    <div class="mb-8 text-justify">
+      Engineering Physics graduate specializing in control systems, electronics, and industrial IoT.
+      Experienced designing and deploying control algorithms (MPC, LQR, PID, RL) and vision-based localization.
+      Trained in firmware, PCB design, and FPGA through the Korea Chamber of Commerce and Industry (KCCI) program.
+      Creator and co-creator of 3 published academic papers.
+    </div>
+
+          <div class="text-3xl w-full font-bold mb-5">Education</div>
+    <div class="rounded-xl border border-base-300 bg-base-100 p-5 mb-8">
+      <!-- Degree, school, GPA -->
+      <div class="flex flex-row items-start justify-between gap-4">
+        <div>
+          <h3 class="text-lg font-semibold">Bachelor of Engineering, Engineering Physics (Instrumentation and Control)</h3>
+          <p class="text-sm opacity-75 mt-0.5">
+            Institut Teknologi Bandung (ITB), Bandung, Indonesia &middot; August 2022 &ndash; August 2026
+          </p>
+        </div>
+        <div class="text-right shrink-0">
+          <div class="text-3xl font-bold leading-none">3.68</div>
+          <div class="text-xs opacity-75 mt-1">CGPA / 4.00</div>
+        </div>
+      </div>
+
+      <div class="divider my-4"></div>
+
+      <!-- Undergraduate thesis -->
+      <div class="mb-5">
+        <div class="text-xs font-semibold uppercase tracking-wide opacity-60 mb-1">Undergraduate Thesis</div>
+        <p class="text-lg">
+          Pothole Avoidance and Motion Planning for Autonomous Vehicles using Deep Reinforcement Learning within the
+          CARLA Simulator
+        </p>
+        <a href="#projects" class="btn btn-xs btn-outline mt-2">View project &rarr;</a>
+      </div>
+
+            <!-- Publication -->
+      <div class="mb-4">
+        <div class="text-xs font-semibold uppercase tracking-wide opacity-60 mb-0.5">Publication</div>
+        <div class="grid gap-2">
+          <p class="text-base">
+            Author, "Pothole Avoidance and Motion Planning for Autonomous Vehicles using Deep Reinforcement Learning within the CARLA Simulator"
+          </p>
+          <p class="text-base">
+            Co-author, "A Late-Fusion RGB&ndash;LiDAR&ndash;IMU Framework for Pothole Detection and Severity Estimation in CARLA"
+          </p>
+          <p class="text-base">
+            Co-author, "Fault Detection of Mining Truck Tire Using a Switched Fuzzy Interval Observer"
+          </p>
+        </div>
+      </div>
+
+      <!-- Relevant coursework -->
+      <div>
+        <div class="text-xs font-semibold uppercase tracking-wide opacity-60 mb-2">Relevant Coursework</div>
+        <div class="flex flex-wrap gap-2">
+          <span class="badge badge-outline rounded-md px-3 py-3">Multivariable Control</span>
+          <span class="badge badge-outline rounded-md px-3 py-3">Machine Learning for Control</span>
+          <span class="badge badge-outline rounded-md px-3 py-3">Logic  &amp; Digital Systems</span>
+          <span class="badge badge-outline rounded-md px-3 py-3">AI for Autonomous Systems</span>
+          <span class="badge badge-outline rounded-md px-3 py-3">Signal Processing</span>
+          <span class="badge badge-outline rounded-md px-3 py-3">Industrial IoT</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-3xl w-full font-bold mb-5">Skills</div>
+
+    <div class="mb-5">
+      <div class="font-semibold mb-2">Programming</div>
+      <div class="flex flex-wrap gap-2">
+        <span class="border border-base-content rounded-sm px-3 py-1">Python</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">C/C++</span>
+      </div>
+    </div>
+
+    <div class="mb-5">
+      <div class="font-semibold mb-2">AI &amp; Computer Vision</div>
+      <div class="flex flex-wrap gap-2">
+        <span class="border border-base-content rounded-sm px-3 py-1">TensorFlow</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">PyTorch</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">OpenCV</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">YOLO</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">DRL</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">CARLA</span>
+      </div>
+    </div>
+
+    <div class="mb-5">
+      <div class="font-semibold mb-2">Control &amp; Estimation</div>
+      <div class="flex flex-wrap gap-2">
+        <span class="border border-base-content rounded-sm px-3 py-1">MPC</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">LQR</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">PID</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">Kalman Filter</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">RL</span>
+      </div>
+    </div>
+
+    <div class="mb-5">
+      <div class="font-semibold mb-2">Embedded &amp; Hardware</div>
+      <div class="flex flex-wrap gap-2">
+        <span class="border border-base-content rounded-sm px-3 py-1">STM32</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">ESP32</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">I2C</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">SPI</span>
+      </div>
+    </div>
+
+    <div class="mb-5">
+      <div class="font-semibold mb-2">Industrial Automation &amp; IIoT</div>
+      <div class="flex flex-wrap gap-2">
+        <span class="border border-base-content rounded-sm px-3 py-1">PLCs (Mitsubishi &amp; Omron)</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">HMIs (Weintek, Ignition, Android Studio)</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">MQTT</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">Modbus TCP/RTU</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">EtherNet/IP
+</span>
+      </div>
+    </div>
+
+    <div class="mb-5">
+      <div class="font-semibold mb-2">CAD &amp; Design</div>
+      <div class="flex flex-wrap gap-2">
+        <span class="border border-base-content rounded-sm px-3 py-1">SOLIDWORKS (CSWA)</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">Eagle</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">KiCAD</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="font-semibold mb-2">Simulation</div>
+      <div class="flex flex-wrap gap-2">
+        <span class="border border-base-content rounded-sm px-3 py-1">MATLAB</span>
+        <span class="border border-base-content rounded-sm px-3 py-1">LTspice</span>
+      </div>
+    </div>
+  </section>
+
+    <!-- EXPERIENCE -->
+  <section id="experience" class="mb-12 scroll-mt-20">
+    <div class="text-3xl w-full font-bold mb-5">Experience</div>
+    <div class="time-line-container">
+      <TimeLineElement
+        title="Overseas Language &amp; Technical Training at Korea Chamber of Commerce &amp; Industry (KCCI)"
+        subtitle="From September 2026 to November 2026 at ITB, Bandung, Indonesia"
+      >
+        A 200 hours language training and 300 hours hands-on electronics program separated into 3 modules. The firmware module covered embedded C,
+        MCU structure, interrupts, timers, serial communication, and FreeRTOS. The electronics module
+        covered schematic design, component library development, PCB layout, placement and routing, design
+        verification, and Gerber generation. The FPGA module covered Verilog, combinational and sequential logic,
+        finite state machines, and implementation on an FPGA board.
+      </TimeLineElement>
+      <TimeLineElement
+        title="Research Assistant at Directorate of Research and Innovation, ITB"
+        subtitle="From December 2025 to July 2026 at Bandung, Indonesia"
+      >
+        Investigated how autonomous vehicles can steer around potholes while keeping the ride smooth. Collected and
+        annotated road damage dataset, built the detection model, and designed motion planning algorithm. This
+        work was supported by ITB and National Taiwan University of Science and Technology (NTUST).
+      </TimeLineElement>
+      <TimeLineElement title="System Engineer (Intern) at PT. AVS Simulator" subtitle="From July 2025 to August 2025">
+        Created replica of a MOZA R12 steering system on an STM32 microcontroller to be used in a truck driving
+        simulator.
+      </TimeLineElement>
+      <TimeLineElement
+        title="Vice Director, Mechanical Division at KRSTI (University Robotics Unit)"
+        subtitle="From August 2024 to August 2025 at Bandung, Indonesia"
+      >
+        Built 2 humanoid robots for a robotics competition. Also assembled an Anet A8 3D printer to make and replace robot parts.
+      </TimeLineElement>
+      <TimeLineElement title="Embedded Engineer (Intern) at PT. Cultination" subtitle="From June 2024 to August 2024">
+        Built an automated monitoring system for fish ponds, with sensors and ESP32 firmware feeding live readings to a
+        smartphone app.
+      </TimeLineElement>
+    </div>
+  </section>
+
+    <!-- PROJECTS -->
+  <section id="projects" class="mb-12 scroll-mt-20">
+    <div class="text-3xl w-full font-bold mb-5">Projects {"</>"}</div>
+
+    <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Project 1 -->
+      <a href="/projects" class="block rounded-xl border border-base-300 bg-base-100 overflow-hidden hover:shadow-lg transition">
+        <img
+          src="/projects/pothole-avoidance.webp"
+          alt="Pothole avoidance simulation in CARLA"
+          class="w-full aspect-video object-cover"
+          loading="lazy"
+        />
+        <div class="p-4">
+          <div class="flex items-start justify-between gap-2">
+            <h3 class="font-bold">Pothole Avoidance with Deep Reinforcement Learning</h3>
+            <span class="badge badge-secondary shrink-0">ASCC 2026</span>
+          </div>
+          <p class="text-sm opacity-75 mt-2">
+            YOLOv11 road damage detection and a DQN planner in CARLA. 100% avoidance in bright weather and 84% in rain.
+          </p>
+        </div>
+      </a>
+
+      <!-- Project 2 -->
+      <a href="/projects" class="block rounded-xl border border-base-300 bg-base-100 overflow-hidden hover:shadow-lg transition">
+        <img
+          src="/projects/asrs.webp"
+          alt="IIoT-based 3-axis automated storage and retrieval system"
+          class="w-full aspect-video object-cover"
+          loading="lazy"
+        />
+        <div class="p-4">
+          <h3 class="font-bold">IIoT-Based 3-Axis Automated Storage and Retrieval System</h3>
+          <p class="text-sm opacity-75 mt-2">
+            Omron PLC ladder logic and Weintek HMI, with MQTT and Node-RED remote monitoring and PostgreSQL logging.
+          </p>
+        </div>
+      </a>
+
+     <!-- Project 3 -->
+      <a href="/projects" class="block rounded-xl border border-base-300 bg-base-100 overflow-hidden hover:shadow-lg transition">
+        <img
+          src="/projects/PCB.png"
+          alt="4-Layer PCB Design for HDMI LVDS Converter"
+          class="w-full aspect-video object-cover"
+          loading="lazy"
+        />
+        <div class="p-4">
+          <h3 class="font-bold">Printed Circuit Board (PCB) Design ATMega128-16 and ESP32-P4 MIPI-DSI to HDMI LVDS Converter Board</h3>
+          <p class="text-sm opacity-75 mt-2">
+            A 4-layer PCB design featuring an ATMega128-16 and ESP32-P4 MIPI-DSI to HDMI LVDS converter.
+          </p>
+        </div>
       </a>
     </div>
-  </div>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
-  </div>
+    <div class="mt-6">
+      <a href="/projects" class="btn btn-outline">See all projects</a>
+    </div>
+  </section>
 
-  <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  />
+  <!-- LEADERSHIP -->
+  <section id="leadership" class="mb-12 scroll-mt-20">
+    <div class="text-3xl w-full font-bold mb-5">Leadership</div>
+    <div class="time-line-container">
+      <TimeLineElement title="Vice Director, Mechanical Division at University Robotics Unit" subtitle="">
+        Co-led a five-person team that developed two humanoid robots from start to finish. To save budget, the team
+        built its own Anet A8 3D printer from parts, then used it to enlarge the robots' chest structure for a bigger
+        controller compartment and to print replacements whenever parts broke.
+      </TimeLineElement>
+      <TimeLineElement title="Team Leader, Bridge Monitoring System" subtitle="">
+        Led a three-person team in delivering a bridge monitoring system, taking it from client requirements through to
+        a working prototype.
+      </TimeLineElement>
+    </div>
+  </section>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
-  </div>
+  <!-- HONORS -->
+  <section id="honors" class="mb-12 scroll-mt-20">
+    <div class="text-3xl w-full font-bold mb-5">Honors &amp; Achievements</div>
+    <ul class="list-disc mx-6 mb-8 grid gap-2">
+      <li>
+        <b>Best Indonesian Student Paper Award</b>, 15th Asian Control Conference (ASCC) 2026, June 2026.
+      </li>
+    </ul>
 
-  {
-    last_posts.map((post) => (
-      <>
-        <HorizontalCard
-          title={post.data.title}
-          img={post.data.heroImage}
-          desc={post.data.description}
-          url={"/blog/" + createSlug(post.data.title, post.slug)}
-          target="_self"
-          badge={post.data.badge}
-        />
-        <div class="divider my-0" />
-      </>
-    ))
-  }
+    <div class="text-xl w-full font-bold mb-3">Certifications &amp; Training</div>
+    <ul class="list-disc mx-6 grid gap-2">
+      <li>Certified SOLIDWORKS Associate (CSWA), Dassault Systemes, December 2024</li>
+      <li>Basics of Mitsubishi PLC (20 hours), Instrumentation, Control, and Automation Research Group, ITB, November 2025</li>
+      <li>
+        Overseas Technical Expert Training (500 hours), Korea Chamber of Commerce &amp; Industry (KCCI), July to
+        November 2026
+      </li>
+    </ul>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="mb-12 scroll-mt-20">
+    <div class="text-3xl w-full font-bold mb-5">Contact</div>
+    <ul class="list-disc mx-6 grid gap-2">
+      <li>Email: <a href="mailto:dikaazis71@gmail.com" class="underline">dikaazis71@gmail.com</a></li>
+      <li>LinkedIn: <a href="https://www.linkedin.com/in/dikama" target="_blank" class="underline">linkedin.com/in/dikama</a></li>
+      <li>Location: Bandung, West Java, Indonesia</li>
+    </ul>
+  </section>
 </BaseLayout>
