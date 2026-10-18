@@ -10,24 +10,24 @@ import HorizontalCard from "../components/HorizontalCard.astro";
 
   <HorizontalCard
     title="Pothole Avoidance and Motion Planning with Deep Reinforcement Learning"
+    img="/projects/pothole-avoidance.webp"
     desc="Dec 2025 - Jun 2026. Role: dataset collection, object detection, path planning design. An autonomous vehicle that spots road damage in real time and chooses a path that avoids it without jolting passengers. I gathered 16,000 annotated images of Indonesian roads, then combined a YOLOv11 detector with a DQN agent inside CARLA. A reward function balances pothole avoidance against ride comfort. When training first failed to converge, I traced the problem to the reward weighting and to inconsistent detections between training and evaluation. Fixing both gave a 100% avoidance rate in bright weather, 84% in rain, and a longitudinal acceleration of 0.36 m/s². Presented at ASCC 2026. Tech: YOLOv11, DQN, Python, TensorFlow, PyTorch, OpenCV, CARLA."
-    url="#"
-    target="_self"
+    url="https://drive.google.com/drive/folders/1-jvc4ygdh-QeUgsxYcUha1QzKD3QeQf6?usp=drive_link"
     badge="ASCC 2026"
   />
   <div class="divider my-0"></div>
   <HorizontalCard
     title="IIoT-Based 3-Axis Automated Storage and Retrieval System (ASRS)"
+    img="/projects/asrs.webp"
     desc="Oct 2025 - Jan 2026. Role: System Engineer. A fully automated pick-and-place storage system that can be supervised remotely. I wrote the ladder logic for the three-axis motion sequence, giving fully repeatable cycles of 10 seconds at most, and designed an HMI with live visualization, diagnostics, and manual override. A secure IIoT layer with MQTT and Node-RED sends data to a cloud dashboard and logs history to PostgreSQL, with control signals kept separate from monitoring data to keep communication stable. Tech: Omron PLC (ladder diagram), Weintek HMI, MQTT, Node-RED, PostgreSQL."
-    url="#"
-    target="_self"
+    url="https://drive.google.com/drive/folders/1jE8wLgeluKBA7dq635SnGhEWXc8qoOpI?usp=drive_link"
   />
   <div class="divider my-0"></div>
   <HorizontalCard
     title="Automated Fish Pond Monitoring with Smartphone Integration"
+    img="/projects/fish-pond.webp"
     desc="Jun 2024 - Aug 2024. Role: Embedded Engineer. A real-time monitoring system covering water level, weather, and air flow across three ponds. I designed the sensor network and ESP32 firmware and built an Android app that shows live readings, with a focus on low-latency, dependable delivery so operators can react to abnormal conditions early. Tech: C++, C#, ESP32, IoT sensors, Android Studio."
-    url="#"
-    target="_self"
+    url="https://drive.google.com/drive/folders/1LYigdswihRhi_6kHhhzPZSRFnlrN2-oI?usp=drive_link"
   />
 
   <div>
@@ -36,22 +36,22 @@ import HorizontalCard from "../components/HorizontalCard.astro";
 
   <HorizontalCard
     title="MOZA R12 Steering System Replica"
+    img="/projects/moza-replica.webp"
     desc="Jul 2025 - Aug 2025, PT. AVS Simulator. Built a replica of a MOZA R12 steering system on an STM32 microcontroller for a truck driving simulator."
     url="#"
-    target="_self"
   />
   <div class="divider my-0"></div>
   <HorizontalCard
     title="Humanoid Robots"
+    img="/projects/humanoid.webp"
     desc="Co-led a five-person mechanical team that developed two humanoid robots from start to finish. The team assembled its own Anet A8 3D printer from parts to save budget, then used it to enlarge the robots' chest structure for a bigger controller compartment and to print replacements whenever parts broke."
-    url="#"
-    target="_self"
+    url="https://drive.google.com/drive/folders/1-jvc4ygdh-QeUgsxYcUha1QzKD3QeQf6?usp=drive_link"
   />
   <div class="divider my-0"></div>
   <HorizontalCard
     title="Bridge Monitoring System"
+    img="/projects/bridge-monitoring.webp"
     desc="Led a three-person team in delivering a bridge monitoring system, taking it from client requirements through to a working prototype."
-    url="#"
-    target="_self"
+    url="https://drive.google.com/drive/folders/1d8NjXTs6BW-vLpcFc-MIpx3VtTO8jtxP?usp=drive_link"
   />
 </BaseLayout>
