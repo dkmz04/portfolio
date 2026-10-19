@@ -17,6 +17,27 @@ import HorizontalCard from "../components/HorizontalCard.astro";
   />
   <div class="divider my-0"></div>
   <HorizontalCard
+    title="ASRS RTOS with Robotic Arm"
+    img="/projects/asrs-rtos.webp"
+    desc="Designed the system architecture for an automated sorting and storage system. Integrated a conveyor belt with ultrasonic sensors, an RFID reader, and a robotic arm to sort items into a dynamic storage rack based on RFID attributes. Included an OLED display for real-time monitoring and an alert system triggered by specific temperature (> 26°C) and humidity (> 65%) thresholds."
+    url="https://drive.google.com/drive/folders/1GI7tA-V4892xV1vhsZZr-NjpnZp3gNBA?usp=drive_link"
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="Industrial Communication & Integration: Mitsubishi PLC"
+    img="/projects/plc-mitsubishi-integration.png"
+    desc="Developed a bidirectional industrial communication architecture integrating a Programmable Logic Controller (PLC) with supervisory systems. Utilized KEPServerEX as an intermediary to seamlessly connect the PLC with a SCADA system and a PostgreSQL database for data monitoring and logging."
+    url="https://drive.google.com/drive/folders/1J7sXWeYK4Ty-lu6aB4aFfoX5FeN828sq?hl=id"
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="High-Speed Digital Signal Integrity Analysis"
+    img="/projects/signal-integrity.png"
+    desc="Conducted extensive signal integrity and crosstalk analysis for high-speed circuit designs. Utilized LTspice, Serial Link Designer, and SIMBEOR to evaluate transmission line reflections, PCB trace crosstalk, and microstrip discontinuities. Assessed backplane performance using statistical eye diagrams and optimized Continuous-Time Linear Equalizer (CTLE) and Decision Feedback Equalizer (DFE) parameters."
+    url="https://drive.google.com/drive/folders/1r6tFX8c_bt-huGceYxt2Oa2AsaRLqohH?hl=id"
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
     title="IIoT-Based 3-Axis Automated Storage and Retrieval System (ASRS)"
     img="/projects/asrs.webp"
     desc="Oct 2025 - Jan 2026. Role: System Engineer. A fully automated pick-and-place storage system that can be supervised remotely. I wrote the ladder logic for the three-axis motion sequence, giving fully repeatable cycles of 10 seconds at most, and designed an HMI with live visualization, diagnostics, and manual override. A secure IIoT layer with MQTT and Node-RED sends data to a cloud dashboard and logs history to PostgreSQL, with control signals kept separate from monitoring data to keep communication stable. Tech: Omron PLC (ladder diagram), Weintek HMI, MQTT, Node-RED, PostgreSQL."
@@ -34,6 +55,13 @@ import HorizontalCard from "../components/HorizontalCard.astro";
     <div class="text-3xl w-full font-bold mb-5 mt-10">Other Work</div>
   </div>
 
+  <HorizontalCard
+    title="SMD Pick and Place Machine Operation"
+    img="/projects/smd-pick-and-place.png"
+    desc="Operated Surface-Mount Device (SMD) pick and place machinery for printed circuit board (PCB) assembly. Managed component loading, feeder setup, and precision placement to ensure highly accurate, automated surface mount technology (SMT) manufacturing and hardware production."
+    url="https://drive.google.com/drive/folders/1o4jWAFa6ATF3D7tVbmOZaV-P5WURToxb?hl=id"
+  />
+  <div class="divider my-0"></div>
   <HorizontalCard
     title="MOZA R12 Steering System Replica"
     img="/projects/moza-replica.webp"
