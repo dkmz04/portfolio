@@ -4,82 +4,316 @@ import HorizontalCard from "../components/HorizontalCard.astro";
 ---
 
 <BaseLayout title="Projects" sideBarActiveItemID="projects">
-  <div>
-    <div class="text-3xl w-full font-bold mb-5">Featured Projects</div>
+  <div class="mb-8">
+    <div class="text-3xl w-full font-bold mb-2">All Projects</div>
+    <p class="text-gray-600 dark:text-gray-400 mb-6">A complete view of my project portfolio across control systems, robotics, hardware, data analytics, and industrial IoT.</p>
+    
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap gap-3" id="filter-buttons">
+      <button class="filter-btn active px-4 py-1 border border-black dark:border-gray-400 bg-gray-300 dark:bg-gray-700 font-semibold text-sm transition-colors" data-filter="all">All</button>
+      <button class="filter-btn px-4 py-1 border border-black dark:border-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 text-sm transition-colors" data-filter="Control">Control</button>
+      <button class="filter-btn px-4 py-1 border border-black dark:border-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 text-sm transition-colors" data-filter="Robotics">Robotics</button>
+      <button class="filter-btn px-4 py-1 border border-black dark:border-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 text-sm transition-colors" data-filter="IIoT">IIoT</button>
+      <button class="filter-btn px-4 py-1 border border-black dark:border-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 text-sm transition-colors" data-filter="Embedded">Embedded</button>
+      <button class="filter-btn px-4 py-1 border border-black dark:border-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 text-sm transition-colors" data-filter="Hardware">Hardware</button>
+      <button class="filter-btn px-4 py-1 border border-black dark:border-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 text-sm transition-colors" data-filter="Computer Vision">Computer Vision</button>
+      <button class="filter-btn px-4 py-1 border border-black dark:border-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 text-sm transition-colors" data-filter="Data Analytics">Data Analytics</button>
+    </div>
   </div>
 
-  <HorizontalCard
-    title="Pothole Avoidance and Motion Planning with Deep Reinforcement Learning"
-    img="/projects/pothole-avoidance.webp"
-    desc="Dec 2025 - Jun 2026. Role: dataset collection, object detection, path planning design. An autonomous vehicle that spots road damage in real time and chooses a path that avoids it without jolting passengers. I gathered 16,000 annotated images of Indonesian roads, then combined a YOLOv11 detector with a DQN agent inside CARLA. A reward function balances pothole avoidance against ride comfort. When training first failed to converge, I traced the problem to the reward weighting and to inconsistent detections between training and evaluation. Fixing both gave a 100% avoidance rate in bright weather, 84% in rain, and a longitudinal acceleration of 0.36 m/s². Presented at ASCC 2026. Tech: YOLOv11, DQN, Python, TensorFlow, PyTorch, OpenCV, CARLA."
-    url="https://drive.google.com/drive/folders/1-jvc4ygdh-QeUgsxYcUha1QzKD3QeQf6?usp=drive_link"
-    badge="ASCC 2026"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="ASRS RTOS with Robotic Arm"
-    img="/projects/asrs-rtos.webp"
-    desc="Designed the system architecture for an automated sorting and storage system. Integrated a conveyor belt with ultrasonic sensors, an RFID reader, and a robotic arm to sort items into a dynamic storage rack based on RFID attributes. Included an OLED display for real-time monitoring and an alert system triggered by specific temperature (> 26°C) and humidity (> 65%) thresholds."
-    url="https://drive.google.com/drive/folders/1GI7tA-V4892xV1vhsZZr-NjpnZp3gNBA?usp=drive_link"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Industrial Communication & Integration: Mitsubishi PLC"
-    img="/projects/plc-mitsubishi-integration.png"
-    desc="Developed a bidirectional industrial communication architecture integrating a Programmable Logic Controller (PLC) with supervisory systems. Utilized KEPServerEX as an intermediary to seamlessly connect the PLC with a SCADA system and a PostgreSQL database for data monitoring and logging."
-    url="https://drive.google.com/drive/folders/1J7sXWeYK4Ty-lu6aB4aFfoX5FeN828sq?hl=id"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="High-Speed Digital Signal Integrity Analysis"
-    img="/projects/signal-integrity.png"
-    desc="Conducted extensive signal integrity and crosstalk analysis for high-speed circuit designs. Utilized LTspice, Serial Link Designer, and SIMBEOR to evaluate transmission line reflections, PCB trace crosstalk, and microstrip discontinuities. Assessed backplane performance using statistical eye diagrams and optimized Continuous-Time Linear Equalizer (CTLE) and Decision Feedback Equalizer (DFE) parameters."
-    url="https://drive.google.com/drive/folders/1r6tFX8c_bt-huGceYxt2Oa2AsaRLqohH?hl=id"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="IIoT-Based 3-Axis Automated Storage and Retrieval System (ASRS)"
-    img="/projects/asrs.webp"
-    desc="Oct 2025 - Jan 2026. Role: System Engineer. A fully automated pick-and-place storage system that can be supervised remotely. I wrote the ladder logic for the three-axis motion sequence, giving fully repeatable cycles of 10 seconds at most, and designed an HMI with live visualization, diagnostics, and manual override. A secure IIoT layer with MQTT and Node-RED sends data to a cloud dashboard and logs history to PostgreSQL, with control signals kept separate from monitoring data to keep communication stable. Tech: Omron PLC (ladder diagram), Weintek HMI, MQTT, Node-RED, PostgreSQL."
-    url="https://drive.google.com/drive/folders/1jE8wLgeluKBA7dq635SnGhEWXc8qoOpI?usp=drive_link"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Automated Fish Pond Monitoring with Smartphone Integration"
-    img="/projects/fish-pond.webp"
-    desc="Jun 2024 - Aug 2024. Role: Embedded Engineer. A real-time monitoring system covering water level, weather, and air flow across three ponds. I designed the sensor network and ESP32 firmware and built an Android app that shows live readings, with a focus on low-latency, dependable delivery so operators can react to abnormal conditions early. Tech: C++, C#, ESP32, IoT sensors, Android Studio."
-    url="https://drive.google.com/drive/folders/1LYigdswihRhi_6kHhhzPZSRFnlrN2-oI?usp=drive_link"
-  />
+  <div id="projects-container">
+    
+    <div class="project-wrapper" data-categories="Computer Vision Control">
+      <HorizontalCard
+        title="Pothole Avoidance and Motion Planning with Deep Reinforcement Learning"
+        img="/projects/pothole-avoidance.webp"
+        desc="Dec 2025 - Jun 2026. Role: dataset collection, object detection, path planning design. An autonomous vehicle that spots road damage in real time and chooses a path that avoids it without jolting passengers. I gathered 16,000 annotated images of Indonesian roads, then combined a YOLOv11 detector with a DQN agent inside CARLA. A reward function balances pothole avoidance against ride comfort. When training first failed to converge, I traced the problem to the reward weighting and to inconsistent detections between training and evaluation. Fixing both gave a 100% avoidance rate in bright weather, 84% in rain, and a longitudinal acceleration of 0.36 m/s². Presented at ASCC 2026. Tech: YOLOv11, DQN, Python, TensorFlow, PyTorch, OpenCV, CARLA."
+        url="https://drive.google.com/drive/folders/1-jvc4ygdh-QeUgsxYcUha1QzKD3QeQf6?usp=drive_link"
+        tags={["Computer Vision", "Control"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Other Work</div>
+    <div class="project-wrapper" data-categories="Robotics Embedded IIoT">
+      <HorizontalCard
+        title="ASRS RTOS with Robotic Arm"
+        img="/projects/asrs-rtos.webp"
+        desc="Designed the system architecture for an automated sorting and storage system. Integrated a conveyor belt with ultrasonic sensors, an RFID reader, and a robotic arm to sort items into a dynamic storage rack based on RFID attributes. Included an OLED display for real-time monitoring and an alert system triggered by specific temperature (> 26°C) and humidity (> 65%) thresholds."
+        url="https://drive.google.com/drive/folders/1GI7tA-V4892xV1vhsZZr-NjpnZp3gNBA?usp=drive_link"
+        tags={["Robotics", "Embedded", "IIoT"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="Hardware Embedded">
+      <HorizontalCard
+        title="Printed Circuit Board (PCB) Design ATMega128-16 and ESP32-P4 MIPI-DSI to HDMI LVDS Converter Board"
+        img="/projects/PCB.png"
+        desc="A 4-layer PCB design featuring an ATMega128-16 and ESP32-P4 MIPI-DSI to HDMI LVDS converter. Designed specifically for high-speed signal integrity and hardware conversion capabilities."
+        url="/projects"
+        tags={["Hardware", "Embedded"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="IIoT Control">
+      <HorizontalCard
+        title="Industrial Communication & Integration: Mitsubishi PLC"
+        img="/projects/plc-mitsubishi-integration.png"
+        desc="Developed a bidirectional industrial communication architecture integrating a Programmable Logic Controller (PLC) with supervisory systems. Utilized KEPServerEX as an intermediary to seamlessly connect the PLC with a SCADA system and a PostgreSQL database for data monitoring and logging."
+        url="https://drive.google.com/drive/folders/1J7sXWeYK4Ty-lu6aB4aFfoX5FeN828sq?hl=id"
+        tags={["IIoT", "Control"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="Hardware">
+      <HorizontalCard
+        title="High-Speed Digital Signal Integrity Analysis"
+        img="/projects/signal-integrity.png"
+        desc="Conducted extensive signal integrity and crosstalk analysis for high-speed circuit designs. Utilized LTspice, Serial Link Designer, and SIMBEOR to evaluate transmission line reflections, PCB trace crosstalk, and microstrip discontinuities. Assessed backplane performance using statistical eye diagrams and optimized Continuous-Time Linear Equalizer (CTLE) and Decision Feedback Equalizer (DFE) parameters."
+        url="https://drive.google.com/drive/folders/1r6tFX8c_bt-huGceYxt2Oa2AsaRLqohH?hl=id"
+        tags={["Hardware"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="IIoT Control">
+      <HorizontalCard
+        title="IIoT-Based 3-Axis Automated Storage and Retrieval System (ASRS)"
+        img="/projects/asrs.webp"
+        desc="Oct 2025 - Jan 2026. Role: System Engineer. A fully automated pick-and-place storage system that can be supervised remotely. I wrote the ladder logic for the three-axis motion sequence, giving fully repeatable cycles of 10 seconds at most, and designed an HMI with live visualization, diagnostics, and manual override. A secure IIoT layer with MQTT and Node-RED sends data to a cloud dashboard and logs history to PostgreSQL, with control signals kept separate from monitoring data to keep communication stable. Tech: Omron PLC (ladder diagram), Weintek HMI, MQTT, Node-RED, PostgreSQL."
+        url="https://drive.google.com/drive/folders/1jE8wLgeluKBA7dq635SnGhEWXc8qoOpI?usp=drive_link"
+        tags={["IIoT", "Control"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="IIoT Embedded">
+      <HorizontalCard
+        title="Automated Fish Pond Monitoring with Smartphone Integration"
+        img="/projects/fish-pond.webp"
+        desc="Jun 2024 - Aug 2024. Role: Embedded Engineer. A real-time monitoring system covering water level, weather, and air flow across three ponds. I designed the sensor network and ESP32 firmware and built an Android app that shows live readings, with a focus on low-latency, dependable delivery so operators can react to abnormal conditions early. Tech: C++, C#, ESP32, IoT sensors, Android Studio."
+        url="https://drive.google.com/drive/folders/1LYigdswihRhi_6kHhhzPZSRFnlrN2-oI?usp=drive_link"
+        tags={["IIoT", "Embedded"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="Hardware Robotics Computer Vision">
+      <HorizontalCard
+        title="SMD Pick and Place Machine Operation"
+        img="/projects/smd-pick-and-place.png"
+        desc="Operated Surface-Mount Device (SMD) pick and place machinery for printed circuit board (PCB) assembly. Managed component loading, feeder setup, and precision placement to ensure highly accurate, automated surface mount technology (SMT) manufacturing and hardware production."
+        url="https://drive.google.com/drive/folders/1o4jWAFa6ATF3D7tVbmOZaV-P5WURToxb?hl=id"
+        tags={["Hardware", "Robotics", "Computer Vision"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="Embedded Hardware">
+      <HorizontalCard
+        title="MOZA R12 Steering System Replica"
+        img="/projects/moza-replica.webp"
+        desc="Jul 2025 - Aug 2025, PT. AVS Simulator. Built a replica of a MOZA R12 steering system on an STM32 microcontroller for a truck driving simulator."
+        url="https://drive.google.com/drive/folders/1v29iWRmC_6ZS-RiDkkhRhk2GsdSC4n9e?hl=ID"
+        tags={["Embedded", "Hardware"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="Robotics Hardware">
+      <HorizontalCard
+        title="Humanoid Robots"
+        img="/projects/humanoid.webp"
+        desc="Co-led a five-person mechanical team that developed two humanoid robots from start to finish. The team assembled its own Anet A8 3D printer from parts to save budget, then used it to enlarge the robots' chest structure for a bigger controller compartment and to print replacements whenever parts broke."
+        url="https://drive.google.com/drive/folders/1-jvc4ygdh-QeUgsxYcUha1QzKD3QeQf6?usp=drive_link"
+        tags={["Robotics", "Hardware"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="Embedded IIoT">
+      <HorizontalCard
+        title="Bridge Monitoring System"
+        img="/projects/bridge-monitoring.webp"
+        desc="Led a three-person team in delivering a bridge monitoring system, taking it from client requirements through to a working prototype."
+        url="https://drive.google.com/drive/folders/1d8NjXTs6BW-vLpcFc-MIpx3VtTO8jtxP?usp=drive_link"
+        tags={["Embedded", "IIoT"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="Robotics Computer Vision">
+      <HorizontalCard
+        title="Autonomous Vehicle Object Detection using YOLOv8"
+        img="/projects/object-detection.png"
+        desc="Implemented a YOLOv8-based object detection system in the ITB campus environment for autonomous vehicles. The model was evaluated across various scenarios, including occlusions and behind-glass perspectives, successfully detecting pedestrians, cars, and motorcycles."
+        url="https://drive.google.com/drive/folders/1u3SvwngkD3kQrdT5TA4KWLpfriADcvlL?hl=id"
+        tags={["Robotics", "Computer Vision"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="Robotics Control">
+      <HorizontalCard
+        title="Wheeled Bipedal Robot Balancing and Motion Control"
+        img="/projects/wheeled-biped-robot.png"
+        desc="Evaluated multiple control methods (LQR, PID-LQR, PMP, and Reinforcement Learning) for balancing a wheeled bipedal robot. The LQR controller achieved optimal target tracking in 24 seconds while maintaining the strict pitch angle constraint."
+        url="https://drive.google.com/drive/folders/1X2qjt6vLGokB3VUo9PaB1i-xBMQ_iE5S"
+        tags={["Robotics", "Control"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="Robotics Control">
+      <HorizontalCard
+        title="LQR Motion Control for Hazardous Liquid Handling Robot"
+        img="/projects/robotic-motion-control.png"
+        desc="Designed an LQR state feedback control system with a pre-filter for a wheeled bipedal robot tasked with hazardous liquid handling. Modeled in SolidWorks and simulated via Simulink Simscape Multibody, the system stabilized pitch oscillations and tracked position references with a 28.52-second settling time."
+        url="https://drive.google.com/drive/folders/1vY4ght0I7GftcbHpMjbmyXA8Y6_pvB6f?usp=drive_link"
+        tags={["Robotics", "Control"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="Control">
+      <HorizontalCard
+        title="Process Safety Management: HAZOP and LOPA Analysis"
+        img="/projects/hazop-lopa.png"
+        desc="Conducted a comprehensive Hazard and Operability Study (HAZOP) and Layer of Protection Analysis (LOPA) for an oil and gas facility. Systematically identified potential process deviations, evaluated existing safety safeguards, and quantified risk reduction requirements to ensure operational safety and compliance with industry standards."
+        url="#"
+        tags={["Control"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="IIoT Embedded">
+      <HorizontalCard
+        title="Integrated Automatic Test Equipment (I-ATE) for Industrial Validation"
+        img="/projects/ate.png"
+        desc="Developed a modular Automatic Test Equipment (ATE) platform featuring an ESP32-based signal injector for controlling, monitoring, and logging industrial instrument signals. The system integrates a Human-Machine Interface (HMI) via an Android Companion app and Ignition SCADA over Wi-Fi, utilizing MQTT and HTTP protocols to simulate abnormal system conditions and evaluate component responses."
+        url="https://drive.google.com/drive/folders/1Y3S6oUJaiGrZ7W7LHeL0FtA_DmSSpDNc"
+        tags={["IIoT", "Embedded"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="Control">
+      <HorizontalCard
+        title="2D Heat Conduction Simulation via Finite Difference Method"
+        img="/projects/finite-difference.png"
+        desc="Simulated two-dimensional steady-state heat conduction in a rectangular plate using the Finite Difference Method. Implemented the Gauss-Seidel iterative numerical solver in Python to compute temperature distributions and isothermal lines, analyzing the trade-off between computational speed and error tolerance."
+        url="https://drive.google.com/drive/folders/1OgzC6trmWE1u-2eXeVOqn4WCTiZIBvlV?usp=drive_link"
+        tags={["Control"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="Hardware Control">
+      <HorizontalCard
+        title="Car Audio DSP Tuning and Crossover Design"
+        img="/projects/audio-dsp.png"
+        desc="Configured and tuned an in-car audio system using a Nakamichi Digital Signal Processor. Designed active and passive crossovers for a multi-way speaker setup (subwoofers, midranges, and tweeters) utilizing Butterworth filters, and optimized speaker placement to improve stereo imaging and reduce acoustic reflections."
+        url="https://drive.google.com/drive/folders/1TY-voFH9sFWFT-KTpKBKpMqNXGD-EcCg"
+        tags={["Hardware", "Control"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="Embedded Control">
+      <HorizontalCard
+        title="EMG Biopotential Signal Processing and Actuator Control"
+        img="/projects/emg-signal.png"
+        desc="Processed raw Electromyography (EMG) biopotential signals in MATLAB by applying 20 Hz High-Pass and 50-200 Hz Notch IIR filters to eliminate baseline wander and power line noise. Extracted time and frequency domain features (such as RMS and Mean Frequency), then deployed the processed amplitude data to an ESP32 microcontroller's SPIFFS memory to trigger an LED actuator based on muscle contraction thresholds."
+        url="https://drive.google.com/drive/folders/13jZwUaNJ561s1cvyHIG9nNgAKnIEb79j"
+        tags={["Embedded", "Control"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="Control Embedded">
+      <HorizontalCard
+        title="DC Motor Velocity Control using Hybrid Fuzzy-PID"
+        img="/projects/fuzzy-pid.png"
+        desc="Designed and implemented a hybrid Fuzzy-PID controller for a DC motor to address non-linearities and dynamic load changes. Utilizing triangular membership functions for error evaluation, the adaptive controller outperformed a standard Cohen-Coon PI controller by achieving a faster settling time and lower overshoot during real-time step response testing via an Arduino IDE environment."
+        url="https://drive.google.com/drive/folders/1YtU92lD70DiRmjHpLf0HCudb5fTUuCto"
+        tags={["Control", "Embedded"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="Robotics Embedded">
+      <HorizontalCard
+        title="Robotic Soccer Car"
+        img="/projects/robotic-soccer.png"
+        desc="Developed a robotic soccer car featuring a robust mechanical chassis equipped with a high-power solenoid kicker mechanism for striking the ball. Integrated a wireless control system utilizing a custom Android application for real-time remote driving and kicking operations."
+        url="#"
+        tags={["Robotics", "Embedded"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
+    <div class="project-wrapper" data-categories="Control Data Analytics">
+      <HorizontalCard
+        title="IBM HR Data Analytics: Employee Attrition & Performance"
+        img="/projects/ibm-hr.png"
+        desc="Conducted Exploratory Data Analysis (EDA) and regression modeling on IBM HR data to identify key factors influencing employee turnover. Discovered that metrics such as 'Years With Current Manager' and 'Years In Current Role' heavily impact attrition. Proposed data-driven retention strategies including managerial relationship enhancements and structured career progression pathways."
+        url="https://drive.google.com/drive/folders/1wEeWOaizaXQYIllzF3G78rt-aEATD9Ir"
+        tags={["Control", "Data Analytics"]}
+      />
+    </div>
+
   </div>
 
-  <HorizontalCard
-    title="SMD Pick and Place Machine Operation"
-    img="/projects/smd-pick-and-place.png"
-    desc="Operated Surface-Mount Device (SMD) pick and place machinery for printed circuit board (PCB) assembly. Managed component loading, feeder setup, and precision placement to ensure highly accurate, automated surface mount technology (SMT) manufacturing and hardware production."
-    url="https://drive.google.com/drive/folders/1o4jWAFa6ATF3D7tVbmOZaV-P5WURToxb?hl=id"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="MOZA R12 Steering System Replica"
-    img="/projects/moza-replica.webp"
-    desc="Jul 2025 - Aug 2025, PT. AVS Simulator. Built a replica of a MOZA R12 steering system on an STM32 microcontroller for a truck driving simulator."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Humanoid Robots"
-    img="/projects/humanoid.webp"
-    desc="Co-led a five-person mechanical team that developed two humanoid robots from start to finish. The team assembled its own Anet A8 3D printer from parts to save budget, then used it to enlarge the robots' chest structure for a bigger controller compartment and to print replacements whenever parts broke."
-    url="https://drive.google.com/drive/folders/1-jvc4ygdh-QeUgsxYcUha1QzKD3QeQf6?usp=drive_link"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Bridge Monitoring System"
-    img="/projects/bridge-monitoring.webp"
-    desc="Led a three-person team in delivering a bridge monitoring system, taking it from client requirements through to a working prototype."
-    url="https://drive.google.com/drive/folders/1d8NjXTs6BW-vLpcFc-MIpx3VtTO8jtxP?usp=drive_link"
-  />
+  <!-- Script for Filtering Client-Side -->
+  <script is:inline>
+    function initFilters() {
+      const buttons = document.querySelectorAll('.filter-btn');
+      const projects = document.querySelectorAll('.project-wrapper');
+
+      if (!buttons.length || !projects.length) return;
+
+      buttons.forEach(btn => {
+        // Prevent attaching multiple event listeners on navigation
+        if (btn.dataset.listenerAttached) return;
+        btn.dataset.listenerAttached = 'true';
+
+        btn.addEventListener('click', () => {
+          // Reset styling for all buttons
+          buttons.forEach(b => {
+            b.classList.remove('active', 'bg-gray-300', 'dark:bg-gray-700', 'font-semibold');
+            b.classList.add('hover:bg-gray-200', 'dark:hover:bg-gray-800');
+          });
+          
+          // Apply active styling to the clicked button
+          btn.classList.add('active', 'bg-gray-300', 'dark:bg-gray-700', 'font-semibold');
+          btn.classList.remove('hover:bg-gray-200', 'dark:hover:bg-gray-800');
+
+          const filter = btn.getAttribute('data-filter');
+
+          // Filter projects based on data-categories attribute
+          projects.forEach(project => {
+            if (filter === 'all') {
+              project.style.display = 'block';
+            } else {
+              const categories = project.getAttribute('data-categories') || '';
+              if (categories.includes(filter)) {
+                project.style.display = 'block';
+              } else {
+                project.style.display = 'none';
+              }
+            }
+          });
+        });
+      });
+    }
+
+    // Run on standard initial load
+    document.addEventListener('DOMContentLoaded', initFilters);
+    // Run on Astro View Transition navigation
+    document.addEventListener('astro:page-load', initFilters);
+    // Fallback if the script runs after the DOM is already parsed
+    if (document.readyState !== 'loading') initFilters();
+  </script>
 </BaseLayout>

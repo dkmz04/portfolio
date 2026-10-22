@@ -278,33 +278,203 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
     </div>
   </section>
 
-  <!-- HONORS -->
-  <section id="honors" class="mb-12 scroll-mt-20">
-    <div class="text-3xl w-full font-bold mb-5">Honors &amp; Achievements</div>
-    <ul class="list-disc mx-6 mb-8 grid gap-2">
-      <li>
-        <b>Best Indonesian Student Paper Award</b>, 15th Asian Control Conference (ASCC) 2026, June 2026.
-      </li>
-    </ul>
+<!-- HONORS -->
+<section id="honors" class="mb-12 scroll-mt-20">
+  <div class="text-3xl w-full font-bold mb-5">Honors &amp; Achievements</div>
 
-    <div class="text-xl w-full font-bold mb-3">Certifications &amp; Training</div>
-    <ul class="list-disc mx-6 grid gap-2">
-      <li>Certified SOLIDWORKS Associate (CSWA), Dassault Systemes, December 2024</li>
-      <li>Basics of Mitsubishi PLC (20 hours), Instrumentation, Control, and Automation Research Group, ITB, November 2025</li>
-      <li>
-        Overseas Technical Expert Training (500 hours), Korea Chamber of Commerce &amp; Industry (KCCI), July to
-        November 2026
-      </li>
-    </ul>
-  </section>
+  <div class="grid gap-4 mb-10">
+    <!-- Existing Award -->
+    <div class="flex gap-4 rounded-xl border border-gray-300 dark:border-gray-700 p-5">
+      <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 text-xl">🏆</div>
+      <div>
+        <div class="text-xs uppercase tracking-wide text-gray-500">Paper Award</div>
+        <div class="font-bold">Best Indonesian Student Paper Award</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">15th Asian Control Conference (ASCC) 2026, June 2026</div>
+        <a href="/certs/ascc-paper.pdf" target="_blank" rel="noopener noreferrer"
+           class="mt-2 inline-block rounded border border-current px-2 py-0.5 text-xs hover:opacity-70">
+          View certificate ↗
+        </a>
+      </div>
+    </div>
 
-  <!-- CONTACT -->
-  <section id="contact" class="mb-12 scroll-mt-20">
-    <div class="text-3xl w-full font-bold mb-5">Contact</div>
-    <ul class="list-disc mx-6 grid gap-2">
-      <li>Email: <a href="mailto:dikaazis71@gmail.com" class="underline">dikaazis71@gmail.com</a></li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/dikama" target="_blank" class="underline">linkedin.com/in/dikama</a></li>
-      <li>Location: Bandung, West Java, Indonesia</li>
-    </ul>
-  </section>
+    <!-- KSE Scholarship -->
+    <div class="flex gap-4 rounded-xl border border-gray-300 dark:border-gray-700 p-5">
+      <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 text-xl">🏅</div>
+      <div>
+        <div class="text-xs uppercase tracking-wide text-gray-500">Scholarship Awardee</div>
+        <div class="font-bold">Karya Salemba Empat (KSE) Scholarship</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">Yayasan Karya Salemba Empat</div>
+      </div>
+    </div>
+
+    <!-- PIP Scholarship -->
+    <div class="flex gap-4 rounded-xl border border-gray-300 dark:border-gray-700 p-5">
+      <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 text-xl">🏅</div>
+      <div>
+        <div class="text-xs uppercase tracking-wide text-gray-500">Scholarship Awardee</div>
+        <div class="font-bold">Smart Indonesia Program (PIP) Scholarship</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">Ministry of Education and Culture</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <div class="text-3xl w-full font-bold mb-3">Certifications &amp; Training</div>
+  <div class="grid gap-4 md:grid-cols-2">
+
+    <!-- CSWA -->
+    <div class="flex gap-4 rounded-xl border border-gray-300 dark:border-gray-700 p-4">
+      <a href="/certs/cswa.pdf" target="_blank" rel="noopener noreferrer" class="shrink-0">
+        <img src="/certs/cswa.png" alt="CSWA certificate"
+             class="h-20 w-28 rounded border border-gray-200 dark:border-gray-700 object-cover" loading="lazy" />
+      </a>
+      <div>
+        <div class="font-bold leading-snug">Certified SOLIDWORKS Associate (CSWA)</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">Dassault Systèmes · December 2024</div>
+        <a href="/certs/cswa.pdf" target="_blank" rel="noopener noreferrer"
+           class="mt-2 inline-block rounded border border-current px-2 py-0.5 text-xs hover:opacity-70">
+          View certificate ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Mitsubishi PLC -->
+    <div class="flex gap-4 rounded-xl border border-gray-300 dark:border-gray-700 p-4">
+      <a href="/certs/mitsubishi-plc.pdf" target="_blank" rel="noopener noreferrer" class="shrink-0">
+        <img src="/certs/mitsubishi-plc.png" alt="Mitsubishi PLC certificate"
+             class="h-20 w-28 rounded border border-gray-200 dark:border-gray-700 object-cover" loading="lazy" />
+      </a>
+      <div>
+        <div class="font-bold leading-snug">Basics of Mitsubishi PLC (20 hours)</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">Instrumentation, Control, and Automation Research Group, ITB · November 2025</div>
+        <a href="/certs/mitsubishi-plc.pdf" target="_blank" rel="noopener noreferrer"
+           class="mt-2 inline-block rounded border border-current px-2 py-0.5 text-xs hover:opacity-70">
+          View certificate ↗
+        </a>
+      </div>
+    </div>
+
+        <!-- KCCI Overseas Technical Expert Training -->
+    <div class="flex gap-4 rounded-xl border border-gray-300 dark:border-gray-700 p-4">
+      <a href="/certs/kcci-training.pdf" target="_blank" rel="noopener noreferrer" class="shrink-0">
+        <img src="/certs/kcci-training.png" alt="KCCI Overseas Technical Expert Training certificate"
+             class="h-20 w-28 rounded border border-gray-200 dark:border-gray-700 object-cover" loading="lazy" />
+      </a>
+      <div>
+        <div class="font-bold leading-snug">Overseas Technical Expert Training (500 hours)</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">Korea Chamber of Commerce &amp; Industry (KCCI)</div>
+        <!-- Timeline: edit the dates below -->
+        <div class="text-sm text-gray-600 dark:text-gray-400">July 2026 – November 2026</div>
+        <a href="/certs/kcci-training.pdf" target="_blank" rel="noopener noreferrer"
+           class="mt-2 inline-block rounded border border-current px-2 py-0.5 text-xs hover:opacity-70">
+          View certificate ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- P&ID Training -->
+    <div class="flex gap-4 rounded-xl border border-gray-300 dark:border-gray-700 p-4">
+      <a href="/certs/pid-training.pdf" target="_blank" rel="noopener noreferrer" class="shrink-0">
+        <img src="/certs/pid-training.png" alt="P&amp;ID training certificate"
+             class="h-20 w-28 rounded border border-gray-200 dark:border-gray-700 object-cover" loading="lazy" />
+      </a>
+      <div>
+        <div class="font-bold leading-snug">P&amp;ID Training</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">The Institution of Engineers Indonesia . April 2025</div>
+        <a href="/certs/pid-training.pdf" target="_blank" rel="noopener noreferrer"
+           class="mt-2 inline-block rounded border border-current px-2 py-0.5 text-xs hover:opacity-70">
+          View certificate ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- IEC 61499 -->
+    <div class="flex gap-4 rounded-xl border border-gray-300 dark:border-gray-700 p-4">
+      <a href="/certs/iec-61499.pdf" target="_blank" rel="noopener noreferrer" class="shrink-0">
+        <img src="/certs/iec-61499.png" alt="IEC 61499 participant certificate"
+             class="h-20 w-28 rounded border border-gray-200 dark:border-gray-700 object-cover" loading="lazy" />
+      </a>
+      <div>
+        <div class="font-bold leading-snug">IEC 61499 Participant</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">IEEE Indonesia Instrumentation and Measurement & Information · April 2025</div>
+        <a href="/certs/iec-61499.pdf" target="_blank" rel="noopener noreferrer"
+           class="mt-2 inline-block rounded border border-current px-2 py-0.5 text-xs hover:opacity-70">
+          View certificate ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- MATLAB Onramp (PNG, used for both thumbnail and link) -->
+    <div class="flex gap-4 rounded-xl border border-gray-300 dark:border-gray-700 p-4">
+      <a href="/certs/matlab-onramp.png" target="_blank" rel="noopener noreferrer" class="shrink-0">
+        <img src="/certs/matlab-onramp.png" alt="MATLAB Onramp certificate"
+             class="h-20 w-28 rounded border border-gray-200 dark:border-gray-700 object-cover" loading="lazy" />
+      </a>
+      <div>
+        <div class="font-bold leading-snug">MATLAB Onramp</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">MathWorks · April 2025</div>
+        <a href="/certs/matlab-onramp.png" target="_blank" rel="noopener noreferrer"
+           class="mt-2 inline-block rounded border border-current px-2 py-0.5 text-xs hover:opacity-70">
+          View certificate ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- RETALKS Presenter -->
+    <div class="flex gap-4 rounded-xl border border-gray-300 dark:border-gray-700 p-4">
+      <a href="/certs/retalks-presenter.pdf" target="_blank" rel="noopener noreferrer" class="shrink-0">
+        <img src="/certs/retalks-presenter.png" alt="RETALKS presenter certificate"
+             class="h-20 w-28 rounded border border-gray-200 dark:border-gray-700 object-cover" loading="lazy" />
+      </a>
+      <div>
+        <div class="font-bold leading-snug">RETALKS Presenter</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">Ruang Eksprezi · August 2025</div>
+        <a href="/certs/retalks-presenter.pdf" target="_blank" rel="noopener noreferrer"
+           class="mt-2 inline-block rounded border border-current px-2 py-0.5 text-xs hover:opacity-70">
+          View certificate ↗
+        </a>
+      </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="mb-12 mt-12 w-full col-span-full block clear-both scroll-mt-20">
+  <div class="text-3xl w-full font-bold mb-6">Contact</div>
+  <div class="flex flex-col gap-4 text-lg">
+    
+    <div class="flex items-center gap-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 shrink-0">
+        <rect width="20" height="16" x="2" y="4" rx="2"/>
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+      </svg>
+      <a href="mailto:dikaazis71@gmail.com" class="hover:underline">dikaazis71@gmail.com</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 shrink-0">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+        <rect width="4" height="12" x="2" y="9"/>
+        <circle cx="4" cy="4" r="2"/>
+      </svg>
+      <a href="https://www.linkedin.com/in/dikama" target="_blank" rel="noopener noreferrer" class="hover:underline">linkedin.com/in/dikama</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 shrink-0">
+        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+        <path d="M9 18c-4.51 2-5-2-7-2"/>
+      </svg>
+      <a href="https://github.com/dkmz04" target="_blank" rel="noopener noreferrer" class="hover:underline">github.com/dkmz04</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 shrink-0">
+        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+        <circle cx="12" cy="10" r="3"/>
+      </svg>
+      <span>Bandung, West Java, Indonesia</span>
+    </div>
+
+  </div>
+</section>
 </BaseLayout>
