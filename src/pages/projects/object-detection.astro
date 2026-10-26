@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Autonomous Vehicle Object Detection using YOLOv8" sideBarActiveItemID="projects">
+
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Autonomous Vehicle Object Detection using YOLOv8</h1>
+
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Robotics</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Computer Vision</span>
+      <span class="bg-gray-800 text-white dark:bg-gray-200 dark:text-black px-2 py-0.5 text-xs font-bold rounded">COURSE PROJECT</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Institution:</strong> Institut Teknologi Bandung (ITB)</p>
+      <p class="mb-2"><strong>Tech Stack:</strong> YOLOv8</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1u3SvwngkD3kQrdT5TA4KWLpfriADcvlL?hl=id" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <div>
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        An autonomous vehicle has to recognize what is around it before it can plan a safe move. This project implements an object detection system based on YOLOv8 for the ITB campus environment, where cars, motorcycles and pedestrians share the same roads and parking areas.
+      </p>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        Rather than testing only on clean, easy frames, the model was evaluated across a range of difficult scenarios to see how well it holds up in realistic conditions.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Scope</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Detector:</strong> YOLOv8, a single-stage real-time object detector.</li>
+        <li><strong>Environment:</strong> The ITB campus, with roads, parked vehicles and pedestrians.</li>
+        <li><strong>Target classes:</strong> Pedestrians, cars and motorcycles.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Evaluation Scenarios</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Occlusions:</strong> Objects partly hidden by other vehicles or obstacles, as in a crowded parking lot.</li>
+        <li><strong>Behind-glass perspectives:</strong> Views captured through a window or windshield, which add reflections and reduce contrast.</li>
+        <li><strong>Mixed traffic:</strong> Scenes with several object types at once.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Result</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li>The model successfully detected pedestrians, cars and motorcycles across the tested scenarios, including the occluded and behind-glass cases.</li>
+      </ul>
+    </div>
+  </div>
+
+</BaseLayout>
