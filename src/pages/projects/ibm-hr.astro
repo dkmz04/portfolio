@@ -1,0 +1,126 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="IBM HR Data Analytics: Attrition & Performance" sideBarActiveItemID="projects">
+
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">IBM HR Data Analytics: Attrition & Performance</h1>
+
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Data Analytics</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Regression</span>
+      <span class="bg-gray-800 text-white dark:bg-gray-200 dark:text-black px-2 py-0.5 text-xs font-bold rounded">GCIC 2025</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Program:</strong> GCIC 2025 Final Assignment</p>
+      <p class="mb-2"><strong>Dataset:</strong> IBM HR Analytics Employee Attrition and Performance</p>
+      <p class="mb-2"><strong>Methods:</strong> Exploratory Data Analysis, Correlation Analysis, Regression Modeling</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1wEeWOaizaXQYIllzF3G78rt-aEATD9Ir" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <!-- Hero Image (replaces the video section) -->
+    <div class="mt-12 mb-12">
+      <div class="w-full md:w-2/3 lg:w-1/3">
+        <img src="/projects/ibmhr/ibmhr1.png" alt="Analyzing IBM HR Data: Attrition and Performance cover" class="w-full rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+
+    <div>
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        Lower employee turnover is generally assumed to mean a more efficient organization, but is that always true? This project looks at the factors that influence employee attrition at IBM, directly or indirectly, using the public "IBM HR Analytics Employee Attrition and Performance" dataset.
+      </p>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        The dataset covers employee age, department, education level, job satisfaction, gender, job role, marital status and overtime hours. The goal is to understand what drives people to leave and turn those findings into practical retention suggestions for the company.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Analysis Approach</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Problem definition:</strong> Investigate the factors behind attrition and test whether lower turnover consistently correlates with better efficiency.</li>
+        <li><strong>EDA:</strong> Distributions of employee age, business travel frequency and department headcount.</li>
+        <li><strong>Feature engineering:</strong> A correlation heatmap across the dataset variables, then a focused correlation matrix of Age, WorkLifeBalance, YearsAtCompany, YearsInCurrentRole, YearsSinceLastPromotion, YearsWithCurrManager and StockOptionLevel.</li>
+        <li><strong>Key finding:</strong> The tenure variables are strongly correlated with each other (about 0.51–0.77), so they were also modeled together.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Experiment Results</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Single-variable regressions:</strong> Attrition against Age (R² 0.024), YearsAtCompany (R² 0.017), JobSatisfaction (p = 0.0005, R² 0.009) and YearsWithCurrManager (very low p-value, R² 0.023).</li>
+        <li><strong>Combined model:</strong> YearsInCurrentRole, YearsWithCurrManager, YearsSinceLastPromotion and YearsAtCompany together reached R² 0.033 with a very low p-value.</li>
+        <li><strong>Reading the results:</strong> The relationships are statistically significant, but the low R² values show that no single factor explains attrition on its own.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Business Proposal</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Strengthen managerial relationships:</strong> Leadership training and regular one-on-one meetings, since time with the current manager emerged as the most influential factor.</li>
+        <li><strong>Promote career progression:</strong> Transparent advancement paths, structured promotion cycles and clear performance benchmarks.</li>
+        <li><strong>Build a retention-focused environment:</strong> Mentorship programs and regular satisfaction surveys to find pain points.</li>
+        <li><strong>Target retention:</strong> Predictive analytics to flag employees at risk of leaving, with personalized engagement plans, competitive compensation and non-monetary benefits such as wellness programs and remote work options.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+
+    <!-- Slider Container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/ibmhr/ibmhr2.png" alt="Histogram of employee age" class="w-full h-48 md:h-[280px] object-contain bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/ibmhr/ibmhr3.png" alt="Employee count by business travel category" class="w-full h-48 md:h-[280px] object-contain bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/ibmhr/ibmhr4.png" alt="Employee count by department" class="w-full h-48 md:h-[280px] object-contain bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/ibmhr/ibmhr5.png" alt="Correlation heatmap of attrition dataset variables" class="w-full h-48 md:h-[280px] object-contain bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/ibmhr/ibmhr6.png" alt="Correlation matrix of tenure-related variables" class="w-full h-48 md:h-[280px] object-contain bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb;
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af;
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+  /* Dark mode scrollbar */
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

@@ -1,0 +1,119 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="High-Speed Digital Signal Integrity Analysis" sideBarActiveItemID="projects">
+  
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">High-Speed Digital Signal Integrity Analysis</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Signal Integrity</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">PCB Design</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">SerDes</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Tech Stack:</strong> LTspice, MATLAB (RF PCB Toolbox, Serial Link Designer, SerDes Designer), SIMBEOR</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1r6tFX8c_bt-huGceYxt2Oa2AsaRLqohH?hl=id" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <div class="mb-8">
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        This project is a series of simulation studies on signal integrity in high-speed PCB and backplane channels. It starts with transmission line reflections and basic analog circuits in LTspice, then moves to crosstalk between PCB traces, a 10 Gbps backplane channel with line cards, and the design of an analog equalizer (CTLE) for a SerDes receiver.
+      </p>
+
+      <p class="mb-6 text-gray-700 dark:text-gray-300">
+        Each study varies a physical or circuit parameter, such as load impedance, trace spacing, parallel trace length, or equalizer settings, and measures its effect on signal quality through waveforms, S-parameters, eye diagrams, and crosstalk metrics (ICR, ICN, PSXT).
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Key Studies & Results</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Reflections (LTspice):</strong> On a 50 Ω line, overshoot fell from about 8.1 V with a 2000 Ω load to about 4.4 V with a 55 Ω load, and undershoot from about −4 V to −0.15 V, confirming the benefit of impedance matching. The study also covered an RC low-pass filter (cut-off near 80 Hz), a MOSFET amplifier (about 40 dB gain at 1 kHz) and a CTLE circuit.</li>
+        <li><strong>PCB Crosstalk (MATLAB):</strong> For two coupled traces, widening the spacing from 5 mm to 10 mm reduced near-end and far-end crosstalk by roughly 5–15 dB across most of the 0–10 GHz range. In the time domain, crosstalk pulses appeared only at signal edges.</li>
+        <li><strong>Backplane with Line Cards (10 Gbps):</strong> The unequalized channel had a closed eye. TX FFE tuning (tap 0 = 0.9, tap 1 = −0.2) opened it, and for a longer line card an adaptive DFE opened the eye with tap coefficients converging within about 20–30 ns.</li>
+        <li><strong>Crosstalk with Serial Link Designer:</strong> Across 12 cases (10–20 mil clearance, 0.75–1.5 in parallel length), spacing was the dominant factor. All 10 mil cases failed ICR, ICN and PSXT, while all 20 mil cases passed ICR and PSXT. Margins turned positive at an unequalized signal-to-crosstalk ratio of about 30–32 dB.</li>
+        <li><strong>Microstrip Discontinuity & Crosstalk:</strong> Eye area was compared across channel variations and across aggressor spacing from 100 µm to 500 µm, where it rose from 38.1 to 45.3 V·ps.</li>
+        <li><strong>CTLE Fitting:</strong> The CTLE was modeled with one zero (−1.09 GHz) and a complex pole pair (−5.29 ± j0.49 GHz), giving about 8 dB of boost at the 5 GHz Nyquist frequency with a fit error of −35.4 dB.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+    
+    <!-- Slider Container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/signal-integrity/r1.png" alt="3D PCB model of two coupled traces on a Teflon substrate" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/signal-integrity/r2.png" alt="Surface current distribution (log scale) of the coupled traces" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/signal-integrity/r3.png" alt="S-parameter crosstalk (S21, S31 FEXT, S41 NEXT) from 0 to 10 GHz" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/signal-integrity/r4.png" alt="Time-domain crosstalk on the victim trace" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/signal-integrity/r5.png" alt="Eye diagram from backplane simulation" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/signal-integrity/r6.png" alt="Statistical eye diagram of the equalized channel" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/signal-integrity/r7.png" alt="Eye diagram of the microstrip crosstalk simulation" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/signal-integrity/r8.png" alt="SerDes block diagram with Tx, channel, and Rx CTLE" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/signal-integrity/r9.png" alt="CTLE magnitude response with fitted poles and zeros" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/signal-integrity/r10.png" alt="CTLE transfer function family: magnitude and phase" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280; 
+  }
+  /* Dark mode scrollbar */
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

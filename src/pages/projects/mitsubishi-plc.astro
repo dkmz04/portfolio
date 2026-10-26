@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Industrial Communication & Integration (Mitsubishi PLC)" sideBarActiveItemID="projects">
+  
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Industrial Communication & Integration (Mitsubishi PLC)</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Industrial Automation</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Communication</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">SCADA / HMI</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Tech Stack:</strong> KEPServerEX, OPC UA, Ignition (Perspective HMI), PostgreSQL, MATLAB, UaExpert, ESP32</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1J7sXWeYK4Ty-lu6aB4aFfoX5FeN828sq?hl=id" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <div class="mb-8">
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        This project documents an industrial communication and integration setup in which several systems exchange data over a single OPC UA network. A mini PC acts as the OPC UA server (KEPServerEX), with a microcontroller connected via USB and a PostgreSQL database hosted on the same machine. Two client laptops connect to it over Ethernet: one runs MATLAB and the other runs the Ignition HMI.
+      </p>
+
+      <p class="mb-6 text-gray-700 dark:text-gray-300">
+        The documentation was prepared by the Instrumentation, Control, and Automation Expertise Group (KKIKO), Engineering Physics, Institut Teknologi Bandung, and is intended as a step-by-step guide for education and low-risk implementation.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">What Was Built</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Network Setup:</strong> Static IP addressing on a shared 192.168.1.x subnet for the OPC server, Ignition and MATLAB machines, with firewall rules opened for OPC UA port 49320.</li>
+        <li><strong>Connectivity Testing:</strong> Verified using <code>ipconfig</code>, <code>ping</code> and <code>Test-NetConnection</code> until the TCP test succeeded.</li>
+        <li><strong>MATLAB OPC UA Client:</strong> Connected to the KEPServerEX endpoint, browsed the namespace and read AI, DI, DO and AO tag values, with UaExpert used for troubleshooting and certificate trust.</li>
+        <li><strong>Ignition & HMI:</strong> Configured Ignition as an OPC UA client of KEPServerEX, imported the OPC tags in Designer and linked them to a Perspective HMI.</li>
+        <li><strong>PostgreSQL Historian:</strong> Connected the database to Ignition, enabled tag history with a 1 s scan rate, and confirmed that all 25 OPC tags were recorded and queryable in pgAdmin.</li>
+        <li><strong>Result:</strong> Tag values in the OPC server, Ignition and the PostgreSQL historian matched, confirming end-to-end integration.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+    
+    <!-- Slider Container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/plc/r1.png" alt="Integration computer setup with mini PC and microcontroller" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/plc/r2.png" alt="PowerShell connectivity test (ping and Test-NetConnection port 49320)" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/plc/r3.png" alt="MATLAB OPC UA client connected to KEPServerEX" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280; 
+  }
+  /* Dark mode scrollbar */
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

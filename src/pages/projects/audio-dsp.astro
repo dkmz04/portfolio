@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Car Audio DSP Tuning and Crossover Design" sideBarActiveItemID="projects">
+  
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Car Audio DSP Tuning and Crossover Design</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Hardware</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Control</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Tech Stack:</strong> Nakamichi DSP, Butterworth Filters, Active and Passive Crossovers</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1TY-voFH9sFWFT-KTpKBKpMqNXGD-EcCg" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <div class="mb-8">
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        This project configures and tunes an in-car audio system using a Nakamichi Digital Signal Processor (DSP). The work covers designing active and passive crossovers for a multi-way speaker setup (subwoofers, midranges, and tweeters) using Butterworth filters, and optimizing speaker placement to improve stereo imaging and reduce acoustic reflections.
+      </p>
+
+      <p class="mb-6 text-gray-700 dark:text-gray-300">
+        The workflow runs in two stages: first the audio layout is decided and measured, then the DSP is tuned channel by channel against those measurements.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Speaker Layout</h3>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        Speaker positions were chosen first, since placement directly affects imaging and reflections. Each speaker's distance from the listening point (the tip of the measurement microphone) was measured so the left and right sides are symmetric, and positions were marked and recorded for later analysis.
+      </p>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Woofer:</strong> Handles low frequencies, including the fundamental range of the human voice. It sits on the floor and can be angled slightly upward. Its distance to walls and its position in the room are checked so it does not sit in a node, and reflections are reduced by adjusting direction or adding damping.</li>
+        <li><strong>Midrange:</strong> Key to the clarity of the sound because it carries the second and third harmonics. It is placed near ear height, above the woofer, and aimed so the listener gets on-axis or good off-axis sound, with reflections reduced.</li>
+        <li><strong>Tweeter:</strong> Very important for imaging. It is placed at or above ear height, close to the midrange to keep the wavefront cohesive, and aimed either directly at the listener to reduce reflections or toward the glass and ceiling so reflected sound improves imaging. Obstructions in front of it are avoided because they distort the sound.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Speaker and Channel Configuration</h3>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        Ten DSP channels drive five speaker boxes, each with its own role:
+      </p>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Box 1 (2-way):</strong> A 6.5 inch SWS-65X subwoofer on DSP channel 1. The 2 inch fullrange driver in this box is not used.</li>
+        <li><strong>Box 2 (2-way):</strong> Two 6 inch SB17-NRX woofers on channels 3 and 4. The SB26-STCN tweeter is not used.</li>
+        <li><strong>Box 3 (2-way passive):</strong> Two AP RAM 3C concentric units, a 3 inch midrange plus 1 inch tweeter, using a passive crossover on channels 5 and 6.</li>
+        <li><strong>Box 4 (1-way):</strong> Two 3 inch AP NZ3 Albe midranges on channels 7 and 8.</li>
+        <li><strong>Box 5 (1-way):</strong> Two 1 inch AP RAM 1 tweeters on channels 9 and 10.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">DSP Tuning Process</h3>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Channel Mapping:</strong> Each speaker is assigned to its DSP output channel.</li>
+        <li><strong>Polarity and Stereo Check:</strong> Polarity and left/right stereo are verified before any tuning.</li>
+        <li><strong>Left Side Tuning:</strong> Delay is set according to each speaker's measured distance, and crossovers are then set per speaker.</li>
+        <li><strong>Gain and Equalizer:</strong> Level and frequency response are adjusted last.</li>
+        <li><strong>Crossover Design:</strong> Butterworth filters are used for the crossovers, and the crossover design is simulated and the filter design refined as part of the work.</li>
+        <li><strong>Listening Material:</strong> Music with good stereo separation, as recommended by the course module, is used to judge stereo imaging.</li>
+      </ul>
+    </div>
+  </div>
+
+</BaseLayout>

@@ -1,0 +1,135 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Bridge Monitoring System" sideBarActiveItemID="projects">
+  
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Bridge Monitoring System: Accelerometer-Based Natural Frequency Sensor</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Embedded</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Hardware</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Signal Processing</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Tech Stack:</strong> ADXL345, ESP32, I2C, OLED, FFT, OriginPro, 3D Printing (PLA+)</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1d8NjXTs6BW-vLpcFc-MIpx3VtTO8jtxP?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <div class="mb-8">
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        This project is a portable sensor that determines the natural frequency of a bridge, so that engineers can check whether traffic or other loads could drive the structure into resonance. It was developed under Open Projekt, Institut Teknologi Bandung.
+      </p>
+
+      <p class="mb-6 text-gray-700 dark:text-gray-300">
+        Several quantities could be measured to find a natural frequency: displacement, velocity, acceleration and strain. Acceleration was chosen because it is the most sensitive to frequency, since the acceleration amplitude scales with the square of the frequency while displacement does not. It also needs no fixed reference such as a position or strain gauge reference, and a MEMS accelerometer is much cheaper than alternatives such as LVDTs or geophones while still precise enough, with a resolution of 0.0039 g in the ±2 g full-resolution mode.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Sensor and Electronics</h3>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Sensing:</strong> An ADXL345 digital MEMS accelerometer, a 3-axis device of which one axis is used, with selectable ranges of ±2, ±4, ±8 or ±16 g. It communicates over I2C, which is simpler to configure than SPI.</li>
+        <li><strong>Controller:</strong> An ESP32 DevKit V1 reads and stores the sensor data and has built-in WiFi for connecting to the processing device.</li>
+        <li><strong>Interface:</strong> A 128 × 64 OLED screen and three push buttons let the operator start recording, change the recording interval and repeat a recording.</li>
+        <li><strong>Power:</strong> A 7.4 V battery made of two Li-Ion 14500 cells with a battery management system, regulated to 5 V by an LM7805 for the ESP32, while the OLED and ADXL345 run on the ESP32's 3.3 V. A 9 V 1 A adapter and DC jack are used for charging.</li>
+        <li><strong>PCB:</strong> A custom PCB makes the circuit compact and more resistant to physical disturbance, with pin headers so a damaged component can be replaced without desoldering, and a terminal block connecting the battery.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Casing</h3>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        The 3D-designed casing measures 11 × 10 × 4.2 cm and is made of PLA+ using FDM 3D printing. The top face holds the OLED and three buttons for the operator, and the front face holds the ON/OFF switch and charging port. Isometric, top, exploded and cross-section views were produced to verify the layout.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Measurement and Data Processing</h3>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Recording:</strong> The sensor is mounted on the bridge and records acceleration at a preset interval. The time-domain data is saved as a CSV file.</li>
+        <li><strong>Transfer:</strong> The CSV data is uploaded over a LAN connection.</li>
+        <li><strong>Analysis:</strong> In OriginPro the data is converted from the time domain to the frequency domain using the Fast Fourier Transform, which is much faster than a direct DFT, and peak picking on the amplitude spectrum gives the bridge's natural frequency.</li>
+        <li><strong>Resonance Check:</strong> The measured frequency is compared with the calculated natural frequency to determine whether resonance occurs, and if the load frequency approaches the natural frequency the bridge needs damping.</li>
+        <li><strong>Demonstration:</strong> The processing workflow was shown using dummy data captured with the Arduino IDE serial plotter.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Development Process</h3>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        Development followed a literature review, selection of the measured quantity and the processing method, component study, schematic design and microcontroller code. The circuit was then tested on a breadboard before moving to PCB design, casing design, manufacturing, assembly and trials, with troubleshooting loops whenever a stage failed.
+      </p>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+    
+    <!-- Slider Container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/bridge-monitoring/r1.png" alt="3D design of the sensor casing" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/bridge-monitoring/r2.png" alt="Exploded view of the casing, PCB and battery" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/bridge-monitoring/r3.png" alt="3D model of the sensor PCB with ESP32, OLED and ADXL345" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/bridge-monitoring/r4.png" alt="PCB board layout" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/bridge-monitoring/r5.png" alt="Wiring diagram of the ESP32, ADXL345, OLED and buttons" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/bridge-monitoring/r6.png" alt="FFT amplitude spectrum with peak picking in OriginPro" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/bridge-monitoring/r7.png" alt="Micro-structure of the ADXL345 MEMS sensing element" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/bridge-monitoring/r8.png" alt="Flowchart of the sensor development process" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280; 
+  }
+  /* Dark mode scrollbar */
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

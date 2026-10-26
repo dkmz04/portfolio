@@ -1,0 +1,152 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="ASRS PLC" sideBarActiveItemID="projects">
+  
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Industrial Automation System (Fischertechnik)</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Control Systems</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">PLC</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">HMI</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Industrial IoT</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Timeline:</strong> Nov 2025 – Jan 2026</p>
+      <p class="mb-2"><strong>Role:</strong> PLC Programming, Weintek HMI Design</p>
+      <p class="mb-2"><strong>Tech Stack:</strong> Omron CP2E PLC, CX-Programmer, Weintek MT8102iP HMI, EasyBuilder Pro, L298N Motor Drivers, DC Motors, Ethernet, Node-RED</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1jE8wLgeluKBA7dq635SnGhEWXc8qoOpI?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <div class="mb-8">
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        This system was built for the TF4107 Industrial Internet of Things course (Engineering Physics, ITB) by a team of eight. A Fischertechnik gantry is a good miniature of a CNC or pick-and-place cell, but the kit is normally driven by a local, closed controller. The project asks how to control it the way a real plant would, with a PLC and an HMI, and still connect it to an IoT layer so it can be monitored and commanded from a distance, bridging the OT and IT sides.
+      </p>
+
+      <p class="mb-6 text-gray-700 dark:text-gray-300">
+        The system is a pick-and-store cell: a 3-axis gantry with a gripper takes an item from one shelf address and stores it at another. Commands follow one path, from the HMI through Node-RED to the PLC and then to the Fischertechnik mechanism. The PLC is the controller that actually drives the axis motors and the gripper. The local Weintek HMI talks to it directly, while a laptop running Node-RED acts as the gateway between the PLC's local network and the remote dashboard. My scope within the team covered the PLC program and the local Weintek HMI.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Hardware Architecture</h3>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Controller:</strong> Omron CP2E-N30DT1-D PLC with 18 inputs, 12 PNP (source) outputs with PWM support, and two Ethernet ports. It was chosen because three axes need six direction outputs alone, the L298N drivers need source-type signals, and Ethernet lets it talk to the HMI and the programming laptop.</li>
+        <li><strong>Motor Drivers:</strong> Two L298N drivers form the power stage between the PLC and the DC motors of the X, Y and Z axes and the gripper, with direction set through the IN pins and speed through ENA and ENB.</li>
+        <li><strong>Sensing:</strong> A light and infrared sensor gives the height reference and home position, and an optocoupler board made by the department technicians steps the kit's 9 V sensor signals up to the PLC's 24 V inputs.</li>
+        <li><strong>Operator Controls:</strong> A selector knob switches between auto and manual, a safety button switches the system on and off, and green, yellow and red lamps show whether power is present, which speeds up troubleshooting.</li>
+        <li><strong>Power:</strong> 9 V for the motor drivers and sensor, 24 V for the PLC and HMI, and the 5 V rail from the L298N regulator for logic signals.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">PLC Program</h3>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        The PLC is programmed in CX-Programmer over Ethernet and organised into sections for the X, Y and Z axis settings, direction settings, automatic operation, manual operation, position, and communication.
+      </p>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Position Control:</strong> The motors and drivers give no position feedback, so each axis converts a requested distance into a motor run time, with a calibration scheme to keep positioning repeatable.</li>
+        <li><strong>Direction Logic:</strong> Direction is set per axis by driving IN1 and IN2. IN1 high with IN2 low is one direction, the reverse is the other, and both low stops the motor, so the two directions are never driven at the same time.</li>
+        <li><strong>Automatic Sequence:</strong> Y axis to target, Y arrived, Z axis to target, Z arrived, then take or store, repeated with the second address to complete the transfer.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Local HMI (Weintek MT8102iP)</h3>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        The local HMI is built in EasyBuilder Pro on a 10.1 inch Weintek MT8102iP panel (1024 × 600, ARM 528 MHz, 128 MB RAM, Ethernet). It was supplied with the kit, which made processor load a design constraint. The interface follows three principles: easy to understand, easy to use, and clearly distinguishable, with green for active and red for inactive. Two versions sit behind a login page, a user interface with manual mode only and a developer interface that adds positions and status.
+      </p>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Manual Mode:</strong> Six jog buttons for X (front and back), Y (right and left) and Z (up and down), plus a priority button that takes manual control over the automation logic and a STANDBY indicator. The developer version adds live X, Y and Z position and STANDBY, TAKE and STORE status lamps.</li>
+        <li><strong>Automatic Mode:</strong> Two numeric inputs for the store and take addresses and a CONFIRM button that validates them and starts the cycle, with real-time X, Y and Z position and the three status lamps alongside.</li>
+        <li><strong>Position Profile:</strong> A page for saved coordinate data, with the position and status columns kept on screen.</li>
+        <li><strong>Rendering Load:</strong> Because the iP-series panel is entry-level, the screens use standard graphic objects and flat grey backgrounds instead of gradients.</li>
+        <li><strong>PLC Addresses:</strong> Take and store shelf inputs map to D860 and D861, manual jog buttons to W2.00 through W2.05, CONFIRM to W1.00, mode select to D10, and the machine status lamps to D200, shared with the Node-RED dashboard.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Outcome</h3>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Result:</strong> All four objectives were met at a functional level.</li>
+        <li><strong>Hardware:</strong> The CP2E and L298N architecture drives all three axes and the gripper.</li>
+        <li><strong>Local HMI:</strong> The Weintek HMI is usable at the machine.</li>
+        <li><strong>Remote Monitoring:</strong> The Node-RED HMI monitors and controls the system over the network.</li>
+        <li><strong>Mode Switching:</strong> Manual and automatic mode switching works, with lamps confirming the system state.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+    
+    <!-- Slider Container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/asrs-plc/r1.webp" alt="ASRS PLC Gallery 1" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/asrs-plc/r2.webp" alt="ASRS PLC Gallery 2" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/asrs-plc/r3.webp" alt="ASRS PLC Gallery 3" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/asrs-plc/r4.webp" alt="ASRS PLC Gallery 4" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/asrs-plc/r5.webp" alt="ASRS PLC Gallery 5" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/asrs-plc/r6.webp" alt="ASRS PLC Gallery 6" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/asrs-plc/r7.webp" alt="ASRS PLC Gallery 7" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/asrs-plc/r8.webp" alt="ASRS PLC Gallery 8" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280; 
+  }
+  /* Dark mode scrollbar */
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

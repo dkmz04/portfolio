@@ -1,0 +1,122 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="DC Motor Velocity Control using Hybrid Fuzzy-PID" sideBarActiveItemID="projects">
+
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">DC Motor Velocity Control using Hybrid Fuzzy-PID</h1>
+
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Control</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Fuzzy Logic</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Embedded</span>
+      <span class="bg-gray-800 text-white dark:bg-gray-200 dark:text-black px-2 py-0.5 text-xs font-bold rounded">COURSE PROJECT</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Course:</strong> TF4022 Discrete Control Systems, ITB</p>
+      <p class="mb-2"><strong>Team:</strong> Dika Muhammad Azis, Faaiq Mastyaga, Fernando Alvirianda Yoga, Nabil Rashid Musadi</p>
+      <p class="mb-2"><strong>Role:</strong> Data Collection and Reporting</p>
+      <p class="mb-2"><strong>Tech Stack:</strong> MATLAB, Arduino IDE, eFLL (Fuzzy Logic library), DC Motor Kit with Tachometer</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1YtU92lD70DiRmjHpLf0HCudb5fTUuCto" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <!-- Hero Image (replaces the video section) -->
+    <div class="mt-12 mb-12">
+      <div class="w-full md:w-3/4 lg:w-1/2">
+        <img src="/projects/fuzzypid/fuzzypid1.png" alt="Fuzzy PID tracking setpoints from 10% to 90%" class="w-full rounded-xl bg-white shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+
+    <div>
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        Speed control of a DC motor underpins robotics, conveyors, HVAC and pump systems, but a fixed-gain PID can struggle with nonlinearity, disturbances and changing parameters. This project builds a hybrid fuzzy-PID controller and compares it against the best conventional controller from the previous experiment, a Cohen-Coon PI.
+      </p>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        The controller was designed from the identified motor model, verified in MATLAB closed-loop simulation, then implemented on the practicum motor kit with Arduino and tested with setpoints from 10% to 90% of the maximum speed.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Controller Design</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Baseline:</strong> Cohen-Coon PI with Kp = 0.12 and Ki = 0.60713, which gave zero steady-state error in the earlier experiment.</li>
+        <li><strong>Hybrid idea:</strong> The fuzzy layer switches the proportional gain by error size, adding 0.01 to Kp for small errors and 0.02 for large errors, so the system responds faster without giving up stability.</li>
+        <li><strong>Membership functions:</strong> Triangular, with Large, Small and Zero sets for positive and negative error; the error range is scaled to the motor's maximum of 589 RPM and the output is expressed as PWM.</li>
+        <li><strong>Rule base:</strong> Five rules mapping error (negative large/small, zero, positive small/large) to the matching PWM output set.</li>
+        <li><strong>Simulation model:</strong> Gain 8.73, time constant 0.16 and dead time 0.17 from the previous identification, tested with a setpoint of 100.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Implementation & Results</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Firmware:</strong> Fuzzy inputs, outputs and rules written in Arduino IDE with the eFLL library; the setpoint comes in over serial and feedback from a tachometer.</li>
+        <li><strong>Setpoint sweep:</strong> The motor followed continuous setpoint steps from 10% to 90% in a stable, gradual way.</li>
+        <li><strong>221 RPM (20%) test:</strong> Rise time of about 30 ms and 0% overshoot, with a settling time above 690 ms and about 3.25% deviation from the setpoint.</li>
+        <li><strong>Takeaway:</strong> Fast and overshoot-free, but final accuracy and long-term stability still need improvement.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+
+    <!-- Slider Container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/fuzzypid/fuzzypid2.png" alt="Fuzzy PID response at 221 RPM setpoint" class="w-full h-48 md:h-[280px] object-contain bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/fuzzypid/fuzzypid3.png" alt="Closed-loop simulation with Cohen-Coon PI control" class="w-full h-48 md:h-[280px] object-cover bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/fuzzypid/fuzzypid4.png" alt="Closed-loop simulation with hybrid fuzzy-PID control" class="w-full h-48 md:h-[280px] object-cover bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/fuzzypid/fuzzypid5.png" alt="Fuzzy rule base" class="w-full h-48 md:h-[280px] object-contain bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/fuzzypid/fuzzypid6.png" alt="Triangular membership values for the error input" class="w-full h-48 md:h-[280px] object-contain bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb;
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af;
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+  /* Dark mode scrollbar */
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

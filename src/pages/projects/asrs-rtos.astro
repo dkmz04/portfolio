@@ -1,0 +1,108 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="ASRS RTOS with Robotic Arm" sideBarActiveItemID="projects">
+  
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">ASRS RTOS with Robotic Arm</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Robotics</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Embedded</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">IIoT</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Role:</strong> Firmware Programmer, System Wiring, Robotic Arm Mechanical Design</p>
+      <p class="mb-2"><strong>Tech Stack:</strong> FreeRTOS, STM32, C, Python, Tkinter, I2C, UART, PWM, MQTT</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1GI7tA-V4892xV1vhsZZr-NjpnZp3gNBA?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <!-- Main Description -->
+    <div>
+      <p class="text-lg mb-4">
+        This project simulates intelligent, automated material-handling systems for warehouses and manufacturing. The automated storage system seamlessly combines item identification, sorting, and environmental tracking into a single continuous process. 
+      </p>
+      
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        As goods travel along a conveyor belt, an RFID reader extracts their essential data. Using this information in conjunction with infrared (IR) sensors, the system allocates items to the appropriate storage rows and columns, actively prioritizing the lowest available spaces. A robotic arm picks up the items and sorts them into the dynamic storage rack.
+      </p>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        The system utilizes an STM32 microcontroller running FreeRTOS with nine dedicated tasks to manage operations, including a Finite State Machine (FSM) supervisor, RFID polling, UART communication, and environmental monitoring. The system continuously tracks ambient temperature and humidity using a DHT11 sensor. Real-time metrics and system statuses are displayed on a local OLED screen (via I2C) and a custom Python/Tkinter dashboard on a connected laptop (via UART). Audio-visual alarms activate automatically if temperature exceeds 26°C or humidity exceeds 65%.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Key Challenges & Results</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Challenge:</strong> Unbalanced power distribution caused excessive load on the STM32 power supply.</li>
+        <li><strong>Resolution:</strong> Integrated an external 5V and 3.3V power supply and utilized an Arduino Nano as a sub-controller to handle the rack's IR sensors, reducing the STM32's processing load.</li>
+        <li><strong>Challenge:</strong> OLED display frequently froze due to memory allocation and stack overflow issues.</li>
+        <li><strong>Resolution:</strong> Increased the stack size parameter for the display task in FreeRTOS and systematically removed large temporary string buffers.</li>
+        <li><strong>Challenge:</strong> RFID module encountered reliability issues during the sector authentication stage, causing frequent read failures.</li>
+        <li><strong>Resolution:</strong> Redesigned the system to rely solely on the factory-assigned UID instead of reading/writing data blocks. The UID is now matched against the system's existing database to identify items and retrieve destination rack IDs.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+    
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/asrs-rtos/r1.png" alt="ASRS System Overview" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/asrs-rtos/r2.png" alt="Robotic Arm Sorting" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/asrs-rtos/r3.png" alt="OLED Display Interface" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/asrs-rtos/r4.png" alt="PC Dashboard Interface" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/asrs-rtos/r5.png" alt="Hardware Implementation Wiring" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280; 
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

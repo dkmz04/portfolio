@@ -1,0 +1,65 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="SMD Pick and Place Machine Operation" sideBarActiveItemID="projects">
+  
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">SMD Pick and Place Machine Operation</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Hardware</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Robotics</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Computer Vision</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1o4jWAFa6ATF3D7tVbmOZaV-P5WURToxb?hl=id" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <!-- Video Section -->
+    <div class="mt-12 mb-12">
+      <div class="w-full md:w-3/4 lg:w-1/2">
+        <div class="relative w-full rounded-xl overflow-hidden shadow-sm border border-gray-200 dark:border-gray-700 bg-black" style="padding-top: 56.25%;">
+          <iframe 
+            class="absolute top-0 left-0 w-full h-full"
+            src="https://www.youtube.com/embed/HhZZRtwdbMs" 
+            title="SMD Pick and Place Machine Operation" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-8">
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        Surface-mount technology (SMT) is the standard way of assembling printed circuit boards (PCBs), and it relies on machines that place very small components quickly and accurately. This project covers operating a Surface-Mount Device (SMD) pick and place machine for PCB assembly, from preparing the machine to placing components on the board.
+      </p>
+
+      <p class="mb-6 text-gray-700 dark:text-gray-300">
+        The work included managing component loading and feeder setup, which determine whether the machine can pick the right part at the right time, and the precision placement of components onto the PCB. The aim was highly accurate, automated surface mount assembly for manufacturing and hardware production.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Key Responsibilities</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Component Loading:</strong> Managed the loading of components for the machine.</li>
+        <li><strong>Feeder Setup:</strong> Set up the feeders that supply components to the machine.</li>
+        <li><strong>Precision Placement:</strong> Operated the machine to place components accurately on the PCB.</li>
+        <li><strong>Automated SMT Production:</strong> Supported automated surface mount manufacturing and hardware production.</li>
+      </ul>
+    </div>
+  </div>
+
+</BaseLayout>

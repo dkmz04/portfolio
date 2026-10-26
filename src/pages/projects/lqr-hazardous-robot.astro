@@ -1,0 +1,97 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="LQR Motion Control" sideBarActiveItemID="projects">
+  
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">LQR Motion Control for Hazardous Liquid Handling Robot</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Robotics</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Control</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Tech Stack:</strong> LQR, SolidWorks, MATLAB, Simulink, Simscape Multibody</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1vY4ght0I7GftcbHpMjbmyXA8Y6_pvB6f?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <div class="mb-8">
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        Handling hazardous liquids is a task where a robot's motion has to be smooth and controlled. This project designs a motion controller for a wheeled bipedal robot tasked with hazardous liquid handling, using an LQR (Linear Quadratic Regulator) state feedback control system with a pre-filter.
+      </p>
+
+      <p class="mb-6 text-gray-700 dark:text-gray-300">
+        The robot was modeled in SolidWorks and simulated in Simulink with Simscape Multibody. In simulation, the controller stabilized the robot's pitch oscillations and tracked position references, with a settling time of 28.52 seconds.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Key Contributions</h3>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Controller Design:</strong> Designed an LQR state feedback controller with a pre-filter for the robot's balancing and motion.</li>
+        <li><strong>Robot Modeling:</strong> Modeled the wheeled bipedal robot in SolidWorks.</li>
+        <li><strong>Simulation:</strong> Simulated the system in Simulink using Simscape Multibody.</li>
+        <li><strong>Stabilization:</strong> The system stabilized pitch oscillations.</li>
+        <li><strong>Position Tracking:</strong> The system tracked position references with a settling time of 28.52 seconds.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+    
+    <!-- Slider Container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/lqr-liquid-robot/r1.png" alt="LQR Hazardous Liquid Handling Robot Gallery 1" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/lqr-liquid-robot/r2.png" alt="LQR Hazardous Liquid Handling Robot Gallery 2" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/lqr-liquid-robot/r3.png" alt="LQR Hazardous Liquid Handling Robot Gallery 3" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280; 
+  }
+  /* Dark mode scrollbar */
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

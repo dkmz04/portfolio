@@ -1,0 +1,96 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Automated Fish Pond Monitoring" sideBarActiveItemID="projects">
+  
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Automated Fish Pond Monitoring with Smartphone Integration</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">IIoT</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Embedded</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Timeline:</strong> Jun 2024 – Aug 2024</p>
+      <p class="mb-2"><strong>Role:</strong> Embedded Engineer</p>
+      <p class="mb-2"><strong>Tech Stack:</strong> ESP32, Android</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1LYigdswihRhi_6kHhhzPZSRFnlrN2-oI?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <div class="mb-8">
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        Fish farming depends on conditions that can change quickly, and problems in a pond are easy to miss until they have already affected the fish. This project is a real-time monitoring system for fish ponds that tracks water level, weather, and air flow across three ponds, so operators can see what is happening without checking each pond by hand.
+      </p>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        The system is built around a sensor network that collects these readings at the ponds, with ESP32 firmware handling the measurement and data transmission. The readings are delivered to an Android smartphone app that shows live values for each pond, so they can be checked from anywhere.
+      </p>
+
+      <p class="mb-6 text-gray-700 dark:text-gray-300">
+        The design focus was low-latency, dependable delivery of data. A monitoring system is only useful if its readings arrive on time and keep arriving, so that operators can react to abnormal conditions early instead of finding out after the damage is done.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Key Features</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Multi-Pond Monitoring:</strong> Water level, weather, and air flow are monitored across three ponds.</li>
+        <li><strong>Sensor Network:</strong> A sensor network designed to collect the readings at each pond.</li>
+        <li><strong>ESP32 Firmware:</strong> Firmware developed for the ESP32 to read the sensors and send the data.</li>
+        <li><strong>Android App:</strong> A smartphone app built to show live readings.</li>
+        <li><strong>Reliable Delivery:</strong> Emphasis on low-latency, dependable data delivery so abnormal conditions can be acted on early.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+    
+    <!-- Slider Container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/fish-pond/r1.png" alt="Automated Fish Pond Monitoring Gallery 1" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280; 
+  }
+  /* Dark mode scrollbar */
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

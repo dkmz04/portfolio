@@ -1,0 +1,139 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Integrated Automatic Test Equipment (I-ATE)" sideBarActiveItemID="projects">
+  
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Integrated Automatic Test Equipment (I-ATE)</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Hardware</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Control</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">IIoT</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Tech Stack:</strong> ESP32, Arduino IDE, PCF8574, MCP4725, ADS1115, PCA9548A, SSD1306 OLED, Android Studio (Kotlin, OkHttp), MQTT, Modbus, Ignition SCADA</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1Y3S6oUJaiGrZ7W7LHeL0FtA_DmSSpDNc" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <div class="mb-8">
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        In modern industry, component quality and consistent operation depend on verifying how components behave before they are put into service. Automatic Test Equipment (ATE) answers this need: an automated test system that combines measurement hardware, actuators, control software, and data processing and storage to run programmed tests quickly, with little human error and with traceable records.
+      </p>
+
+      <p class="mb-6 text-gray-700 dark:text-gray-300">
+        This project, developed for the TF4001 Integrated Design Project II course at Engineering Physics, ITB by a team of four, builds an Integrated ATE (I-ATE) platform that links instruments, an HMI and actuators. At its center is a signal injector that can control, monitor, log and emulate signals, and that students can reach from an Android device as a hands-on learning tool.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Starting Point and Improvements</h3>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        The previous stage of the device, developed in the Industrial Instrumentation Laboratory with an industry partner, acts as a signal emulator that sets voltage levels to represent conditions in a system, including abnormal ones, so responses can be tested safely. It offered 8 ON/OFF switches with indicator LEDs for digital inputs, 8 LEDs for digital outputs, and 8 sliders to simulate analog process signals, in 0–5 V for microcontroller tests and 0–24 V for PLC tests.
+      </p>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Android HMI:</strong> Added so operators can monitor system performance more easily.</li>
+        <li><strong>Data Storage:</strong> A mechanism to store operational data as a backup and as a source for analyzing abnormal events.</li>
+        <li><strong>Analog Output Block:</strong> Added so users can see how a system responds to the signals they inject.</li>
+        <li><strong>Status Display:</strong> An on-device interface that shows system status on a screen.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">System Architecture</h3>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        The platform follows a hierarchical industrial control architecture, compared against the API RP 554 reference, with three levels.
+      </p>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Level 0, Field Instruments:</strong> The signal injector acts as an artificial, flexible field instrument. Its digital block handles ON/OFF signals such as interlocks, actuator status and alarms, and its analog block represents variables such as temperature, level or valve position in 0–5 V or 0–24 V ranges.</li>
+        <li><strong>Level 1, Controllers:</strong> Control logic and initial data processing, with Modbus between the controller and OPC, and HTTP over Wi-Fi between the Android app and the ESP32, where the app is the client and the microcontroller is the server.</li>
+        <li><strong>Level 2, Supervision:</strong> The ESP32 publishes readings and control status over MQTT to a broker on a computer, and Ignition SCADA subscribes to them, giving operators live digital and analog status, historical trends, and a view of how the system responds to abnormal injected signals.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Signal Injector Design</h3>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        The signal injector is built around an ESP32 that reads inputs, sets outputs, and talks to the Android Companion app. On start-up it initializes the I2C bus, I/O pins, OLED display and a Wi-Fi access point, and once a phone connects it cycles through three states: scanning the inputs and updating the outputs, sending the data to the app, and receiving control commands from it.
+      </p>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Digital I/O:</strong> PCF8574 I2C expanders provide 8 digital inputs and 8 digital outputs.</li>
+        <li><strong>Analog Output:</strong> MCP4725 DACs, selected through a PCA9548A I2C multiplexer, generate 4 channels of 0–5 V.</li>
+        <li><strong>Analog Input:</strong> An ADS1115 16-bit ADC reads 4 analog input channels.</li>
+        <li><strong>Display:</strong> A 128 × 64 SSD1306 OLED shows the module status and key readings.</li>
+        <li><strong>Wi-Fi Server:</strong> The ESP32 runs as an access point with a web server that returns the inputs as JSON and accepts digital and analog output commands.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Android Companion App</h3>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        The Signal Injector Companion is an Android HMI that connects to the ESP32's Wi-Fi network. Users set the analog outputs between 0 and 5 V and toggle digital outputs DO1 to DO8, while analog inputs AI1 to AI4 and digital inputs DI1 to DI8 are shown live and read-only. A status indicator shows whether the connection is being made, active or failed, and the app polls the device about once a second. A desktop or web SCADA HMI provides the same monitoring and control from a computer.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Development Stages</h3>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        The work was planned in stages: brainstorming and literature study, design, building the device, testing without load, evaluation and refinement, testing with load, and the final report. The limits of the platform are small loads, digital pulse signals, sinusoidal analog signals, and microcontroller and PLC signal standards.
+      </p>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+    
+    <!-- Slider Container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/i-ate/r1.png" alt="I-ATE signal injector prototype with analog input block" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/i-ate/r2.png" alt="I-ATE signal injector prototype with digital input and output blocks" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/i-ate/r3.png" alt="ATE system architecture compared with API RP 554 levels" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280; 
+  }
+  /* Dark mode scrollbar */
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

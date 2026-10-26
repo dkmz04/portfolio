@@ -1,0 +1,107 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Robotic Soccer Car" sideBarActiveItemID="projects">
+
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Robotic Soccer Car</h1>
+
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Robotics</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Embedded</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Role:</strong> Vice Director, Mechanical Division (KRSTI)</p>
+      <p class="mb-2"><strong>Tech Stack:</strong> CAD (SolidWorks), Solenoid Actuator, Wireless Control, Android App</p>
+      <!-- TODO: replace # with the GDrive folder link for this project -->
+      <p class="mb-2"><strong>Source:</strong> <a href="#" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <div>
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        Soccer is a demanding benchmark for a small mobile robot: it has to drive precisely, stay mechanically sturdy through contact with the ball and other robots, and deliver a strong, repeatable kick on command. This project is a robotic soccer car built around those three needs.
+      </p>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        The car combines a robust mechanical chassis with a high-power solenoid kicker for striking the ball, and a wireless control system driven by a custom Android application, so the operator can drive and kick in real time from a phone.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">System Overview</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Mechanical chassis:</strong> A rigid, layered frame designed in CAD that carries the drive wheels, electronics and kicker, and holds up under ball impacts and robot-to-robot contact.</li>
+        <li><strong>Solenoid kicker:</strong> A high-power solenoid mounted at the front that strikes the ball when triggered, giving a fast, repeatable kick instead of pushing the ball with the body.</li>
+        <li><strong>Wireless control:</strong> The onboard microcontroller receives drive and kick commands wirelessly, so there is no tether to the operator.</li>
+        <li><strong>Android application:</strong> A custom-built app that sends driving commands and a dedicated kick action in real time.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Design Focus</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Mechanical robustness:</strong> Structure and mounting designed so the kicker and electronics stay aligned after repeated impacts.</li>
+        <li><strong>Kick delivery:</strong> The solenoid is driven on demand from the app, so kick timing is controlled by the operator.</li>
+        <li><strong>Low-latency operation:</strong> Real-time remote driving and kicking, so the car reacts when the operator does during play.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+
+    <!-- Slider Container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/soccer/soccer1.png" alt="Robotic soccer car CAD model with kicker mechanism" class="w-full h-48 md:h-[280px] object-cover bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/soccer/soccer2.png" alt="Solenoid kicker mechanism close-up" class="w-full h-48 md:h-[280px] object-cover bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/soccer/soccer3.png" alt="Assembled robotic soccer car" class="w-full h-48 md:h-[280px] object-cover bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/soccer/soccer4.png" alt="Custom Android control app interface" class="w-full h-48 md:h-[280px] object-cover bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb;
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af;
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+  /* Dark mode scrollbar */
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

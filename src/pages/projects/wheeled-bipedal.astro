@@ -1,0 +1,110 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Wheeled Bipedal Robot" sideBarActiveItemID="projects">
+  
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Wheeled Bipedal Robot Balancing and Motion Control</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Control</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Robotics</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Tech Stack:</strong> MATLAB, Simulink, Simscape, LQR, PID-LQR, PMP, Reinforcement Learning</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1X2qjt6vLGokB3VUo9PaB1i-xBMQ_iE5S?hl=ID" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <div class="mb-8">
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        A Wheeled Bipedal Robot (WBR) is a two-legged robot that uses wheels to move quickly. To keep it from falling, it is controlled with the inverted pendulum concept: when the body tilts, the wheels are driven to keep the center of gravity in a safe position. Keeping the robot balanced is the key to letting it move fast and dynamically without falling, even though its model is nonlinear.
+      </p>
+
+      <p class="mb-6 text-gray-700 dark:text-gray-300">
+        The main goal is a robot that stays balanced while it moves, making it suitable for robotics applications such as service, inspection, and control research. This project compares several control methods for the robot: LQR, PID-LQR, Pontryagin's Minimum Principle (PMP), and Reinforcement Learning (RL).
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Challenges</h3>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Natural Instability:</strong> The robot behaves like an inverted pendulum and is not stable on its own.</li>
+        <li><strong>Hard Tuning:</strong> LQR tuning is difficult because of the trade-off between stabilizing quickly and requiring large torque.</li>
+        <li><strong>Physical Constraints:</strong> Torque limits, friction and ground contact must be respected for the behavior to be realistic and safe.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Simulation</h3>
+
+      <p class="mb-6 text-gray-700 dark:text-gray-300">
+        The system was simulated in MATLAB, with Simulink for the modeling and Simscape for the visualization. The Simulink model is organized into four subsystems: world modeling, robot modeling, lower body dynamics, and the LQR controller.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Key Findings</h3>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>LQR:</strong> Judged by the time needed to reach the target while staying balanced (pitch angle under 20 degrees), LQR was the best controller in its best configuration without noise.</li>
+        <li><strong>PMP:</strong> For recovering balance, PMP was the best controller, bringing the fallen robot back to an upright stance in about 9 seconds.</li>
+        <li><strong>PID-LQR:</strong> It reached the target while balanced, but the compromise between stability and time to target was still lopsided, with the system tending to favor one over the other.</li>
+        <li><strong>Reinforcement Learning:</strong> Performance was not yet satisfactory, mainly because training was short (only 703 iterations). The reward function also needs work: accumulated per-step penalties can outweigh the fall penalty (for example, -10 per step over 400 steps is -4000 against a -3000 fall), which makes falling early look mathematically better than trying to balance. Because velocity and pitch rate are missing from the cost, the robot had no gradient for braking smoothly and oscillated back and forth past the target without settling.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+    
+    <!-- Slider Container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/wheeled-biped/r1.png" alt="Wheeled Bipedal Robot Gallery 1" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/wheeled-biped/r2.png" alt="Wheeled Bipedal Robot Gallery 2" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/wheeled-biped/r3.png" alt="Wheeled Bipedal Robot Gallery 3" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280; 
+  }
+  /* Dark mode scrollbar */
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

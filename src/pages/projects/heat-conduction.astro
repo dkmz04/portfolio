@@ -1,0 +1,118 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="2D Heat Conduction Simulation" sideBarActiveItemID="projects">
+  
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">2D Heat Conduction Simulation</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Simulation</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Thermal Engineering</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Timeline:</strong> 2024</p>
+      <p class="mb-2"><strong>Tech Stack:</strong> Python, Finite Difference Method, Gauss-Seidel Iteration</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1OgzC6trmWE1u-2eXeVOqn4WCTiZIBvlV?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <div class="mb-8">
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        This project simulates steady-state heat conduction in a thin rectangular plate, solving for how temperature is distributed across it. It was done as a course project for TF2104 Thermal Engineering at Engineering Physics, ITB, by a team of three, and the solver was written in Python.
+      </p>
+
+      <p class="mb-6 text-gray-700 dark:text-gray-300">
+        The plate is held at a higher temperature along its top edge and at a lower temperature along the other three edges. Heat is assumed to flow mainly in the x and y directions, with the temperature gradient through the plate thickness neglected, so the problem reduces to the two-dimensional Laplace equation. Temperature is normalized as θ = (T − T1) / (T2 − T1), which gives θ = 1 on the hot edge and θ = 0 on the others.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Numerical Method</h3>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Finite Difference Method:</strong> The plate is divided into a grid, and the second derivatives in x and y are approximated from neighboring nodes. For every interior node this gives a simple balance in which the four surrounding temperatures sum to four times the node's own temperature.</li>
+        <li><strong>Gauss-Seidel Iteration:</strong> The resulting system of linear equations is solved iteratively. Each node is updated from its neighbors starting from an initial guess, and iteration continues until the change between successive iterations falls below a chosen tolerance ε.</li>
+        <li><strong>Grid:</strong> A 100 × 100 grid was used, which suits an iterative solver like Gauss-Seidel better than a direct solution.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Results</h3>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Temperature Distribution:</strong> The steepest temperature gradient appears along the hot top boundary, where the temperature changes most sharply, and the distribution is symmetric about the vertical axis, showing thermal balance between the two sides.</li>
+        <li><strong>Effect of Tolerance:</strong> A tolerance of ε = 0.1 converged in 173 iterations, while ε = 0.0001 needed 3,636 iterations. The smaller tolerance gives a smoother, more accurate field but costs far more computation time.</li>
+        <li><strong>Isotherm Check:</strong> The computed isotherms match the theoretical isotherm and heat flow pattern for steady two-dimensional conduction with constant properties and no heat generation.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Conclusions</h3>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Accuracy vs. Speed:</strong> A smaller error tolerance improves the quality of the temperature distribution but slows the computation, and a larger one does the opposite.</li>
+        <li><strong>Convergence:</strong> The Gauss-Seidel solution converged for both tolerances.</li>
+        <li><strong>Physical Validity:</strong> The resulting temperature distribution agrees with what is physically expected.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+    
+    <!-- Slider Container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/heat-conduction/r1.png" alt="Temperature distribution with isotherm lines at tolerance 0.0001" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/heat-conduction/r2.png" alt="Temperature distribution at tolerance 0.0001 (3636 iterations)" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/heat-conduction/r3.png" alt="Temperature distribution at tolerance 0.1 (173 iterations)" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/heat-conduction/r4.png" alt="Schematic of 2D conduction in a thin rectangular plate with boundary conditions" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/heat-conduction/r5.png" alt="Theoretical isotherms and heat flow lines for the plate" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280; 
+  }
+  /* Dark mode scrollbar */
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

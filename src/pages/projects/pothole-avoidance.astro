@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Pothole Avoidance and Motion Planning" sideBarActiveItemID="projects">
+  
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Pothole Avoidance and Motion Planning with Deep Reinforcement Learning</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Computer Vision</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Control</span>
+      <span class="bg-gray-800 text-white dark:bg-gray-200 dark:text-black px-2 py-0.5 text-xs font-bold rounded">THESIS</span>
+      <span class="bg-blue-600 text-white px-2 py-0.5 text-xs font-bold rounded">ASCC 2026 PRESENTED</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Timeline:</strong> Dec 2025 – Jun 2026</p>
+      <p class="mb-2"><strong>Role:</strong> Researcher, Dataset Collection, Path Planning Design</p>
+      <p class="mb-2"><strong>Tech Stack:</strong> YOLOv11, DQN, Python, TensorFlow, PyTorch, OpenCV, CARLA</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1YwdzAbcNsY6-Vq1yNCUJ79D3rdB3Km5Y?hl=ID" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+   <!-- Video Section -->
+  <div class="mt-12 mb-12"> <!-- Ditambahkan mb-12 di sini untuk jarak bawah -->
+    <!-- Kontainer dibatasi lebarnya agar video tunggal tidak terlalu raksasa di layar besar -->
+    <div class="w-full md:w-3/4 lg:w-1/2">
+      <div class="relative w-full rounded-xl overflow-hidden shadow-sm border border-gray-200 dark:border-gray-700 bg-black" style="padding-top: 56.25%;">
+        <iframe 
+          class="absolute top-0 left-0 w-full h-full"
+          src="https://www.youtube.com/embed/D0TsbBGdU-E" 
+          title="DRL Autonomous Vehicles" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+        The advancement of autonomous vehicles (AVs) requires motion planning strategies that not only navigate complex environments, but also account for road surface irregularities. Traditional motion planners often overlook the impact of road damage, such as potholes and cracks, on overall navigational safety and passenger comfort.
+      </p>
+      
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        This research proposes a Road Damage-Aware Motion Planning framework that uses Deep Reinforcement Learning (DRL) to optimize driving trajectories in real-time. In this study, a Deep Q-Network (DQN) is employed as the core learning algorithm to discover optimal policies for pothole avoidance.
+      </p>
+
+      <p class="mb-6 text-gray-700 dark:text-gray-300">
+        By integrating approximately 9,000 to 16,000 annotated high-resolution road surface images (specifically Indonesian roads), the agent is trained to make proactive decisions, such as adjusting speed or performing evasive maneuvers, to mitigate the effects of road distress. The reward function is specifically designed to balance navigational continuity with proactive pothole avoidance maneuvers.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Key Challenges & Results</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Initial Training Failure:</strong> The agent initially struggled to converge, either braking too conservatively (sacrificing comfort) or reacting too late.</li>
+        <li><strong>Resolution:</strong> Traced the issue to the reward weighting function and YOLOv11 detection inconsistencies between training and CARLA evaluation.</li>
+        <li><strong>Performance:</strong> Achieved a <strong>100% avoidance rate in bright weather</strong> and <strong>84% in rain</strong>.</li>
+        <li><strong>Comfort Metrics:</strong> Maintained an average longitudinal acceleration of 0.36 m/s², staying well within ISO 2631 comfort limits.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+    
+    <!-- Slider Container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pothole/r1.png" alt="Pothole Avoidance Gallery 1" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pothole/r2.png" alt="Pothole Avoidance Gallery 2" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pothole/r3.png" alt="Pothole Avoidance Gallery 3" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pothole/r4.png" alt="Pothole Avoidance Gallery 4" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pothole/r5.png" alt="Pothole Avoidance Gallery 5" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pothole/r6.png" alt="Pothole Avoidance Gallery 6" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pothole/r7.png" alt="Pothole Avoidance Gallery 7" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pothole/r8.png" alt="Pothole Avoidance Gallery 8" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pothole/r9.png" alt="Pothole Avoidance Gallery 9" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pothole/r10.png" alt="Pothole Avoidance Gallery 10" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280; 
+  }
+  /* Dark mode scrollbar */
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

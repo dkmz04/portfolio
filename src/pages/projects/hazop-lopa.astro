@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Process Safety Management: HAZOP and LOPA Analysis" sideBarActiveItemID="projects">
+  
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Process Safety Management: HAZOP and LOPA Analysis</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Control</span>
+    </div>
+
+    <div class="mb-8">
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        Oil and gas facilities handle flammable and high-pressure materials, so a single process deviation, such as a flow, pressure, level or temperature moving outside its intended range, can escalate into a serious incident. This project applies two widely used process safety methods, the Hazard and Operability Study (HAZOP) and Layer of Protection Analysis (LOPA), to an oil and gas facility to identify those risks and decide how much protection is needed.
+      </p>
+
+      <p class="mb-6 text-gray-700 dark:text-gray-300">
+        The analysis worked from the facility's process design, systematically identifying potential deviations, evaluating the safeguards already in place, and quantifying the risk reduction required to ensure operational safety and compliance with industry standards.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">HAZOP: Finding What Can Go Wrong</h3>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        HAZOP is a structured, team-based review of the process. The facility is divided into sections, and for each one the process parameters are examined against guide words such as no, more, less, reverse and other than, to describe how the process could deviate from its design intent.
+      </p>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Deviations:</strong> Potential process deviations were identified systematically rather than relying on experience alone.</li>
+        <li><strong>Causes and Consequences:</strong> For each deviation, the possible causes and the resulting consequences were considered.</li>
+        <li><strong>Existing Safeguards:</strong> The safeguards already present in the design were evaluated for how well they cover each scenario.</li>
+        <li><strong>Recommendations:</strong> Where the existing protection was not sufficient, further action was identified.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">LOPA: How Much Protection Is Enough</h3>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        LOPA takes the higher-risk scenarios from the HAZOP and analyzes them semi-quantitatively. Each scenario is described by an initiating event and its consequence, and the independent protection layers that stand between them are credited with a risk reduction. The result is compared with a tolerable risk target to decide whether the existing layers are adequate.
+      </p>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Scenario Definition:</strong> Scenarios were defined from an initiating event to a consequence.</li>
+        <li><strong>Independent Protection Layers:</strong> The existing safeguards were assessed as independent layers, each contributing to risk reduction.</li>
+        <li><strong>Risk Gap:</strong> The remaining risk was compared with the tolerable level to find any shortfall.</li>
+        <li><strong>Required Risk Reduction:</strong> Where a gap remained, the additional risk reduction needed was quantified, giving a clear target for further safeguards.</li>
+        <li><strong>Compliance:</strong> The outcome supports operational safety and compliance with industry standards.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Why It Matters</h3>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        Used together, the two methods connect qualitative hazard identification with a quantitative basis for safeguard decisions. HAZOP shows where the process can fail, and LOPA shows whether the protection in place is enough or how much more is required, so that safety investment is directed at the scenarios that need it.
+      </p>
+    </div>
+  </div>
+
+</BaseLayout>

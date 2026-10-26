@@ -1,0 +1,149 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="MOZA R12 Steering System Replica" sideBarActiveItemID="projects">
+  
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Force Feedback Modeling of the MOZA R12 for a Steering Simulator</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Control Systems</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Modeling</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Simulation</span>
+      <span class="bg-gray-800 text-white dark:bg-gray-200 dark:text-black px-2 py-0.5 text-xs font-bold rounded">INTERNSHIP</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Timeline:</strong> Jun 2025 – Aug 2025</p>
+      <p class="mb-2"><strong>Role:</strong> Intern, Force Feedback Modeling and Simulation</p>
+      <p class="mb-2"><strong>Tech Stack:</strong> MATLAB, MOZA Pit House, iRacing WheelCheck, Excel, Electric Power Steering</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1v29iWRmC_6ZS-RiDkkhRhk2GsdSC4n9e?hl=ID" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <div class="mb-8">
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        A realistic driving simulator depends not only on its visuals but on steering feel, the torque a driver senses when turning the wheel. Advanced steering simulators such as the MOZA R12 deliver this realism, but they are expensive, imported, and often hard to obtain locally. This project, carried out during an internship at PT Alam Virtual Semesta (AVS), builds a force feedback model that imitates the steering feel of the MOZA R12 and its Pit House software, aimed at an open-source approach on top of commercially available Electric Power Steering (EPS) hardware.
+      </p>
+
+      <p class="mb-6 text-gray-700 dark:text-gray-300">
+        The MOZA R12 used at AVS is a direct drive wheelbase with a 12 Nm peak-torque servo motor, a 262,144 PPR position sensor, and adjustable rotation from 360° to 2520°. The work covered the mathematical model, the experimental characterization of the device, and the tools to calibrate and test the model.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Force Feedback Model</h3>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        The model follows the steering torque of a real vehicle and is split into seven independent, modular torques so it can be adjusted for different vehicle types.
+      </p>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Main Torque:</strong> Carries the interaction between the vehicle and the road, computed from rack force and vehicle speed in line with EPS boost assist curves, so the wheel feels moderate at low speed and more solid at high speed.</li>
+        <li><strong>Rack Force Filter:</strong> Shapes the rack force signal before it is used.</li>
+        <li><strong>Friction, Damping and Inertia Torque:</strong> Resistive torques that give the wheel its weight and stability.</li>
+        <li><strong>Active Return Torque:</strong> Returns the wheel toward center when the driver lets go.</li>
+        <li><strong>Limit Torque:</strong> Handles the steering limit.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Characterizing the MOZA R12</h3>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        MOZA does not run the raw physical equations directly. It uses its own simplified parameters in Pit House, so the model was mapped onto them through reverse engineering, using a calculation architecture that mirrors how Pit House works.
+      </p>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Experimental Method:</strong> A controlled input was applied to the wheelbase while one Pit House parameter was varied at a time, and the output was measured with iRacing WheelCheck.</li>
+        <li><strong>Linear Force Test:</strong> A step input from 0 to 10,000 units in increments of 200, each held for 300 ms so the response could settle.</li>
+        <li><strong>Parameters Studied:</strong> Maximum output torque, force feedback intensity, and the advanced settings.</li>
+        <li><strong>Parameter Mapping:</strong> Relationships between each Pit House parameter and the model were derived as equations and conversion tables.</li>
+        <li><strong>Calculator Tool:</strong> An Excel calculator determines the model parameters for a given vehicle type.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Simulation Tool</h3>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        A MATLAB dashboard simulates every torque except the main torque, which comes from the game. Users set vehicle speed and maximum steering angle with sliders, toggle Active Return and torque direction with checkboxes, and view the total torque, its components, or both, alongside an animated virtual steering wheel whose line thickens as torque increases. Two maneuvers were tested: turn and hold, and active return after releasing the wheel.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Results</h3>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Turn and Hold:</strong> At low speed and low angle, friction is the only significant torque. At high speed and low angle, friction and damping together give a very stable feel, and at low speed with a large angle, inertia and damping dominate.</li>
+        <li><strong>Active Return:</strong> At low speed and low release angle, active return acts alone and slowly returns the wheel to zero. At high speed and large angle it works strongly while damping, friction and inertia oppose it to prevent oscillation.</li>
+        <li><strong>Conclusion:</strong> The force feedback was modeled modularly, the MOZA R12 parameters were identified and integrated into the model architecture, and the simulation program was evaluated qualitatively as consistent with intuition, valid for use with further calibration.</li>
+        <li><strong>Limitation:</strong> Evaluation was qualitative only because no quantitative ground truth was available, and the accuracy of iRacing WheelCheck was not verified.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+    
+    <!-- Slider Container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/moza-r12/r1.png" alt="MATLAB steering feel simulation dashboard with virtual steering wheel" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/moza-r12/r2.png" alt="Force feedback calculation architecture linking the model to MOZA parameters" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/moza-r12/r3.png" alt="Block diagram of the supporting torque components" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/moza-r12/r4.png" alt="MOZA Pit House software interface" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/moza-r12/r5.png" alt="Maximum output torque limit versus normalized force" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/moza-r12/r6.png" alt="FFB game force feedback intensity versus normalized force" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/moza-r12/r7.png" alt="Simulated output torque and components for the turn-and-hold maneuver" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/moza-r12/r8.png" alt="Simulated output torque and components for active return" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280; 
+  }
+  /* Dark mode scrollbar */
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

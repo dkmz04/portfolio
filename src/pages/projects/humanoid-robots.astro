@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Humanoid Robots" sideBarActiveItemID="projects">
+  
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Humanoid Robots</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Robotics</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Hardware</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Timeline:</strong> May 2023 – Jun 2024</p>
+      <p class="mb-2"><strong>Role:</strong> Mechanical Engineer, Co-Lead of Mechanical Team</p>
+      <p class="mb-2"><strong>Tech Stack:</strong> CAD, 3D Printing (Anet A8), Stress and Thermal Analysis</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1-jvc4ygdh-QeUgsxYcUha1QzKD3QeQf6?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <div class="mb-8">
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        This project covers the mechanical development of two humanoid robots, built from start to finish by a five-person mechanical team that I co-led. The work spanned designing the robots' mechanical structure, building them, and keeping them running through repeated rounds of testing and repair.
+      </p>
+
+      <p class="mb-6 text-gray-700 dark:text-gray-300">
+        To save budget, the team assembled its own Anet A8 3D printer from parts. The printer was then used to enlarge the robots' chest structure, creating a bigger compartment for the controller, and to print replacement parts whenever components broke.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Key Contributions</h3>
+
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Team Co-Lead:</strong> Co-led a five-person mechanical team through the full development of two humanoid robots.</li>
+        <li><strong>Mechanical Design:</strong> Worked with the engineering team to develop mechanical designs for the robotic systems, including 3D models, CAD drawings and detailed assembly drawings.</li>
+        <li><strong>Analysis:</strong> Performed stress and thermal analysis to optimize component designs for performance and durability.</li>
+        <li><strong>Safety and Requirements:</strong> Ensured the designs met all safety and regulatory requirements.</li>
+        <li><strong>In-House 3D Printing:</strong> Built an Anet A8 3D printer from parts to cut costs, then used it for the enlarged chest compartment and for on-demand replacement parts.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+    
+    <!-- Slider Container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/humanoid-robots/r1.png" alt="Humanoid Robots Gallery 1" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/humanoid-robots/r2.png" alt="Humanoid Robots Gallery 2" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/humanoid-robots/r3.png" alt="Humanoid Robots Gallery 3" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/humanoid-robots/r4.png" alt="Humanoid Robots Gallery 4" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280; 
+  }
+  /* Dark mode scrollbar */
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

@@ -1,0 +1,113 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Printed Circuit Board (PCB) Design" sideBarActiveItemID="projects">
+  
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Printed Circuit Board (PCB) Design ATMega128-16 and ESP32-P4 MIPI-DSI to HDMI LVDS Converter Board</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Hardware</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Embedded</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Role:</strong> PCB Designer</p>
+      <p class="mb-2"><strong>Tech Stack:</strong> ATMega128-16, LT8912B, ESP32-P4, L7805, MIPI-DSI, HDMI, LVDS</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1pA5JdikjAxTfo2fOEJz44OUv2YllcXt0?hl=ID" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+    </div>
+
+    <!-- Main Description -->
+    <div>
+      <p class="text-lg mb-4">
+        This project involved designing custom Printed Circuit Boards (PCBs) for two distinct systems: an ATMega128-16 microcontroller board and an ESP32-P4 MIPI-DSI to HDMI LVDS Converter board utilizing the LT8912B IC. 
+      </p>
+      
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        The ATMega128-16 development board features a 2-layer design incorporating Power & Regulator, In-System Programming (ISP), and Microcontroller Unit (MCU) sub-circuits. My design variation (D1) prioritized mechanical stability with four mounting holes and a robust keyed DC jack alongside JST power inputs. It utilized wider 0.8 mm power tracks and 0.25 mm signal tracks within a 65 x 65 mm footprint, achieving zero clearance or Design Rules Checker (DRC) violations.
+      </p>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        The ESP32-P4 converter board involved a more complex 4-layer stackup (F.Cu Signal, In1 GND, In2 VCC, B.Cu Signal) built on JLC04161H-7628 material. The board converts MIPI DSI signals to HDMI TMDS and LVDS outputs using the LT8912B core. My 50 x 60 mm compact design (D2) utilized a dedicated VCC plane on the second inner layer for power distribution, 100 Ω differential pairs (0.1278 mm width / 0.127 mm gap) for high-speed signal integrity, and BSS138 bidirectional level shifters.
+      </p>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+    
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pcb-design/r1.png" alt="ATMega128-16 Schematic Power & Regulator" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pcb-design/r2.png" alt="ATMega128-16 PCB Layout" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pcb-design/r3.png" alt="ATMega128-16 Routing" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pcb-design/r4.png" alt="ATMega128-16 3D View Top" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pcb-design/r5.png" alt="LT8912B Core Schematic" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pcb-design/r6.png" alt="Converter Board Level Shift" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pcb-design/r7.png" alt="Converter Board PCB Layout" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pcb-design/r8.png" alt="Impedance Calculator and DRC" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pcb-design/r9.png" alt="Converter Board 3D View Top" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/pcb-design/r10.png" alt="Converter Board 3D View Bottom" class="w-full h-48 md:h-[280px] object-cover rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af; 
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280; 
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>
