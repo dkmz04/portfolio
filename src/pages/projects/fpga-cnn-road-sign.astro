@@ -1,0 +1,144 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Integer CNN Road Sign Classifier on Basys 3 FPGA" sideBarActiveItemID="projects">
+
+  <div class="mb-4">
+    <a href="/projects" class="text-sm hover:underline flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Integer CNN Road Sign Classifier on Basys 3 FPGA</h1>
+
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">FPGA</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Computer Vision</span>
+      <span class="border border-current px-2 py-0.5 text-xs text-black dark:text-white rounded">Embedded</span>
+      <span class="bg-blue-600 text-white px-2 py-0.5 text-xs font-bold rounded">KCCI PROGRAM</span>
+    </div>
+
+    <!-- Metadata Normal Paragraphs -->
+    <div class="text-lg mb-8 text-gray-800 dark:text-gray-200">
+      <p class="mb-2"><strong>Program:</strong> KCCI Korea Engineering Education Program (FPGA Design), Nov 2026</p>
+      <p class="mb-2"><strong>Team:</strong> Saufik Ramadhan, Rubi Naufal Tiandito, Mahardhika Putra Adipratama, Kania Ika Putri, Dika Muhammad Azis</p>
+      <p class="mb-2"><strong>Role:</strong> UART Communication, Frame Control, Image Input and HMI</p>
+      <p class="mb-2"><strong>Tech Stack:</strong> Basys 3 (Artix-7 XC7A35T), RTL, Vivado, Python, GTSRB, UART</p>
+      <p class="mb-2"><strong>Source:</strong> <a href="https://drive.google.com/drive/folders/1uqOZbS-1pBUJiLIDGwkvPIbaGNIKpMfH?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">View GDrive ↗</a></p>
+    </div>
+
+    <!-- Hero Image (replaces the video section) -->
+    <div class="mt-12 mb-12">
+      <div class="w-full md:w-3/4 lg:w-1/2">
+        <img src="/projects/fpga-cnn/fpgacnn1.webp" alt="Road sign CNN on Basys 3 final presentation cover" class="w-full rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+
+    <div>
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        Driver-assistance systems must read road signs far faster than a human can react, yet most published accelerators run on boards many times larger than a low-cost FPGA. This project asks whether a Basys 3 (XC7A35T, no external RAM) can classify traffic signs using integer-only logic, well inside a 1 ms per-sign budget, with accuracy close to software.
+      </p>
+
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        The team trained and quantized small CNNs on the GTSRB dataset, implemented the inference datapath in RTL, and verified it bit-for-bit against a Python integer golden model. A desktop HMI sends 16×16 grayscale images over UART and displays the board's answer, and 16 stored images can also be classified with the board's switches alone.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Design Targets</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Latency:</strong> 1 ms or less per sign, and a fixed cycle count so worst case equals average case.</li>
+        <li><strong>Accuracy:</strong> At least 95% on the 8-class task.</li>
+        <li><strong>Hardware:</strong> Basys 3 only, with integer arithmetic (int8 weights, uint8 pixels, 24-bit accumulators).</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Models</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Preprocessing:</strong> ROI crop, grayscale, histogram equalization and bilinear resize to 16×16.</li>
+        <li><strong>Baseline A (8 classes):</strong> One 3×3 convolution with 8 filters, 2×2 max pooling and a 392→8 fully connected layer, with 3,208 weights and 17,248 MACs per image.</li>
+        <li><strong>D42 (8 classes):</strong> Adds a second convolution after pooling for 45,472 MACs per image.</li>
+        <li><strong>C-43 (43 classes):</strong> 16 filters and a 784→43 fully connected layer for 61,936 MACs per image.</li>
+        <li><strong>Argmax:</strong> Softmax is skipped because the largest raw score already gives the class.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">Results</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Accuracy (integer model):</strong> A reached 96.63% and D42 97.25% on 2,760 validation images; C-43 reached 89.60% on the 12,630-image official GTSRB test set.</li>
+        <li><strong>Speed:</strong> Baseline A takes a fixed 23,542 cycles, or 235.42 µs at 100 MHz.</li>
+        <li><strong>Parallel MAC sweep:</strong> Twelve Conv1 × FC lane combinations all met 100 MHz timing in simulation and build. The fastest, 9×8, runs in 55.73 µs with 18 DSPs, about 4.2× faster than the serial design.</li>
+        <li><strong>Hardware verification:</strong> On the physical board, 2,432 of 2,432 scores (A) and 2,024 of 2,024 scores (D42) matched the golden model, and all 16 stored-image slots passed.</li>
+        <li><strong>Footprint:</strong> Baseline A uses 1.154 LUTs, 3 DSPs and 2.5 BRAM tiles, with about 0.106 W estimated on-chip power.</li>
+        <li><strong>Limits:</strong> The 43-class model runs at 50 MHz in about 2.04 ms (from simulation), so it does not meet the 1 ms target, and its weakest classes include pedestrians (31.67% recall).</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mb-3 mt-8">My Contribution</h3>
+      <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>UART link:</strong> 115200 8N1 protocol with a 259-byte request (256 pixels plus checksum) and a 32-byte reply carrying the class, cycle count and eight scores, with error codes for bad checksums, unknown commands and timeouts.</li>
+        <li><strong>Image input and display:</strong> Frame control, a 16-image stored mode selected by switches, and the 7-segment and LED status output.</li>
+        <li><strong>HMI:</strong> A desktop interface that sends images, shows the predicted class and scores, and reports FPS, latency and a round-trip time of about 32 ms.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Image Gallery Slider -->
+  <div class="mt-12">
+    <h3 class="text-3xl w-full font-bold mb-6">Gallery</h3>
+
+    <!-- Slider Container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 custom-scrollbar">
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/fpga-cnn/fpgacnn6.webp" alt="Desktop HMI showing the class, scores and cycle count returned by the board" class="w-full h-48 md:h-[280px] object-contain bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/fpga-cnn/fpgacnn7.webp" alt="CNN structure: 3x3 convolution, 2x2 max pooling, flatten, fully connected layer and argmax" class="w-full h-48 md:h-[280px] object-contain bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/fpga-cnn/fpgacnn2.webp" alt="Conv1 feature maps from the integer model, one picture per class" class="w-full h-48 md:h-[280px] object-contain bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/fpga-cnn/fpgacnn3.webp" alt="Validation confusion matrices of baseline A and D42" class="w-full h-48 md:h-[280px] object-contain bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/fpga-cnn/fpgacnn4.webp" alt="Official test confusion matrix of the 43-class C-43 model" class="w-full h-48 md:h-[280px] object-contain bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/fpga-cnn/fpgacnn5.webp" alt="Core latency versus DSP usage for 12 Conv1 and FC MAC combinations" class="w-full h-48 md:h-[280px] object-contain bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+      <div class="snap-start shrink-0 w-[80vw] sm:w-[45vw] md:w-[350px] lg:w-[450px]">
+        <img src="/projects/fpga-cnn/fpgacnn8.webp" alt="Simulated Conv engine pipeline signals for the first 16 clock ticks" class="w-full h-48 md:h-[280px] object-contain bg-white rounded-xl shadow-sm border border-gray-200 dark:border-gray-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Custom Scrollbar for the Gallery Slider */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e5e7eb;
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca3af;
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+  /* Dark mode scrollbar */
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

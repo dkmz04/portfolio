@@ -264,6 +264,17 @@ import HorizontalCard from "../components/HorizontalCard.astro";
       />
     </div>
 
+    <div class="project-wrapper" data-categories="Embedded Computer Vision">
+      <HorizontalCard
+        title="Integer CNN Road Sign Classifier on Basys 3 FPGA"
+        img="/projects/fpga-cnn/fpgacnn6.webp"
+        desc="Built an integer-only CNN inference engine in RTL on a Basys 3 FPGA to classify GTSRB traffic signs, reaching 96.63% accuracy on 8 classes in a fixed 235 µs per image, down to 55.7 µs with parallel MACs. Developed the UART link, frame control, stored-image mode and desktop HMI, and verified the board bit-for-bit against a Python golden model."
+        url="/projects/fpga-cnn-road-sign"
+        tags={["Embedded", "Computer Vision"]}
+      />
+      <div class="divider my-0"></div>
+    </div>
+
   </div>
 
   <!-- Script for Filtering Client-Side -->
@@ -310,3 +321,4 @@ import HorizontalCard from "../components/HorizontalCard.astro";
     if (document.readyState !== 'loading') initFilters();
   </script>
 </BaseLayout>
+
